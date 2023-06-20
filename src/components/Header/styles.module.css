@@ -1,4 +1,20 @@
 .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+  height: 90px;
   background-color: #1b1b1b;
-  width: 100%;
+  color: #ffffff;
+}
+
+.header h1::before {
+  color: #85ea2d;
+  content: "Deslocamento ";
+}
+
+.navbar {
+  width: 400px;
+  display: flex;
+  gap: 10px;
 }

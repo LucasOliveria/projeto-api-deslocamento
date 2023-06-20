@@ -1,8 +1,20 @@
-.main {
+.body {
   display: flex;
   flex-direction: column;
+  background-color: #1b1b1b;
   /* justify-content: space-between; */
-  align-items: center;
+  /* align-items: center; */
   width: 100vw;
-  min-height: 100vh;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100vw;
+  height: calc(100vh - 90px);
+  background-color: #fafafa;
+  border-top-left-radius: 45px;
+  border-top-right-radius: 45px;
+
 }
