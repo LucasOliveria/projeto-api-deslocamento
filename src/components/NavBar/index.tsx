@@ -1,4 +1,6 @@
 
+import Props from '@/types/Props';
+import BadgeIcon from '@mui/icons-material/Badge';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import GroupIcon from '@mui/icons-material/Group';
 import HomeIcon from '@mui/icons-material/Home';
@@ -6,11 +8,12 @@ import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import Box from '@mui/material/Box';
+import { useRouter } from 'next/router';
 import { useState } from "react";
-import BadgeIcon from '@mui/icons-material/Badge';
 
-export default function NavBar() {
-  const [value, setValue] = useState(0);
+export default function NavBar({ valueNav }: Props) {
+  const [value, setValue] = useState(valueNav);
+  const router = useRouter();
 
   function handleNavigate() {
     console.log("teste");
@@ -28,27 +31,27 @@ export default function NavBar() {
       >
         <BottomNavigationAction
           label="Home"
-          onClick={handleNavigate}
+          onClick={() => router.push("/")}
           icon={<HomeIcon />}
         />
         <BottomNavigationAction
           label="Clientes"
-          onClick={handleNavigate}
+          onClick={() => router.push("/clientes")}
           icon={<GroupIcon />}
         />
         <BottomNavigationAction
           label="Condutores"
-          onClick={handleNavigate}
+          onClick={() => router.push("/condutores")}
           icon={<BadgeIcon />}
         />
         <BottomNavigationAction
           label="Deslocamento"
-          onClick={handleNavigate}
+          onClick={() => router.push("/deslocamento")}
           icon={<MapOutlinedIcon />}
         />
         <BottomNavigationAction
           label="Veículo"
-          onClick={handleNavigate}
+          onClick={() => router.push("/veiculos")}
           icon={<DirectionsCarIcon />}
         />
       </BottomNavigation>
