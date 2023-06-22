@@ -1,4 +1,4 @@
-// import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { useState, ChangeEvent } from 'react';
-// import EditIcon from '@mui/icons-material/Edit';
+import EditIcon from '@mui/icons-material/Edit';
 import Props from '@/types/Props';
 
 // interface Column {
@@ -55,24 +55,24 @@ import Props from '@/types/Props';
 // }
 
 const rows = [
-  //   createData('India', 'IN', 1324171354, 3287263),
-  //   createData('China', 'CN', 1403500365, 9596961),
-  //   createData('Italy', 'IT', 60483973, 301340),
-  //   createData('United States', 'US', 327167434, 9833520),
-  //   createData('Canada', 'CA', 37602103, 9984670),
-  //   createData('Australia', 'AU', 25475400, 7692024),
-  //   createData('Germany', 'DE', 83019200, 357578),
-  //   createData('Ireland', 'IE', 4857000, 70273),
-  //   createData('Mexico', 'MX', 126577691, 1972550),
-  //   createData('Japan', 'JP', 126317000, 377973),
-  //   createData('France', 'FR', 67022000, 640679),
-  //   createData('United Kingdom', 'GB', 67545757, 242495),
-  //   createData('Russia', 'RU', 146793744, 17098246),
-  //   createData('Nigeria', 'NG', 200962417, 923768),
-  //   createData('Brazil', 'BR', 210147125, 8515767),
+  // createData('India', 'IN', 1324171354, 3287263),
+  // createData('China', 'CN', 1403500365, 9596961),
+  // createData('Italy', 'IT', 60483973, 301340),
+  // createData('United States', 'US', 327167434, 9833520),
+  // createData('Canada', 'CA', 37602103, 9984670),
+  // createData('Australia', 'AU', 25475400, 7692024),
+  // createData('Germany', 'DE', 83019200, 357578),
+  // createData('Ireland', 'IE', 4857000, 70273),
+  // createData('Mexico', 'MX', 126577691, 1972550),
+  // createData('Japan', 'JP', 126317000, 377973),
+  // createData('France', 'FR', 67022000, 640679),
+  // createData('United Kingdom', 'GB', 67545757, 242495),
+  // createData('Russia', 'RU', 146793744, 17098246),
+  // createData('Nigeria', 'NG', 200962417, 923768),
+  // createData('Brazil', 'BR', 210147125, 8515767),
 ];
 
-export default function InfoTable(headerTable: Props) {
+export default function InfoTable({ header, clients, drivers }: Props) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
@@ -91,7 +91,7 @@ export default function InfoTable(headerTable: Props) {
         <Table stickyHeader aria-label="sticky table" >
           <TableHead >
             <TableRow >
-              {headerTable.header?.map((title) => (
+              {header?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((title) => (
                 <TableCell
                   key={title.id}
                   align='center'
@@ -102,42 +102,65 @@ export default function InfoTable(headerTable: Props) {
               ))}
             </TableRow>
           </TableHead>
-          <TableBody >
+          {clients &&
+            <TableBody >
+              {clients?.map((client) => (
+                <TableRow hover key={client.id} role="checkbox" tabIndex={-1}>
+                  <TableCell>
+                    {client.nome}
+                  </TableCell>
+                  <TableCell>
+                    {client.numeroDocumento}
+                  </TableCell>
+                  <TableCell>
+                    {client.tipoDocumento}
+                  </TableCell>
+                  <TableCell>
+                    {client.logradouro}, {client.numero} - {client.bairro}
+                  </TableCell>
+                  <TableCell>
+                    {client.cidade}/{client.uf}
+                  </TableCell>
+                  <TableCell>
+                    <EditIcon />
+                  </TableCell>
+                  <TableCell>
+                    <DeleteForeverIcon />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          }
 
-            <TableRow role="checkbox">
-              <TableCell>
-
-              </TableCell>
-              <TableCell>
-
-              </TableCell>
-              <TableCell>
-
-              </TableCell>
-              <TableCell>
-
-              </TableCell>
-            </TableRow>
-
-            <TableRow role="checkbox">
-              <TableCell>
-
-              </TableCell>
-              <TableCell>
-
-              </TableCell>
-              <TableCell>
-
-              </TableCell>
-              <TableCell>
-
-              </TableCell>
-            </TableRow>
-
-          </TableBody>
+          {drivers &&
+            <TableBody >
+              {drivers?.map((driver) => (
+                <TableRow hover key={driver.id} role="checkbox" tabIndex={-1}>
+                  <TableCell>
+                    {driver.nome}
+                  </TableCell>
+                  <TableCell>
+                    {driver.numeroHabilitacao}
+                  </TableCell>
+                  <TableCell>
+                    {driver.catergoriaHabilitacao}
+                  </TableCell>
+                  <TableCell>
+                    {driver.vencimentoHabilitacao}
+                  </TableCell>
+                  <TableCell>
+                    <EditIcon />
+                  </TableCell>
+                  <TableCell>
+                    <DeleteForeverIcon />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          }
         </Table>
       </TableContainer>
-      <TablePagination
+      {/* <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
         component="div"
         count={rows.length}
@@ -145,7 +168,7 @@ export default function InfoTable(headerTable: Props) {
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
-      />
+      /> */}
     </Paper>
   );
 }

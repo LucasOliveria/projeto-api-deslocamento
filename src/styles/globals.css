@@ -80,6 +80,7 @@ body {
 
 .MuiTableCell-body {
   font-size: 1.3rem;
+  text-align: center;
 }
 
 .MuiTableCell-body:last-of-type {

@@ -11,7 +11,9 @@ export default function Deslocamento() {
       <Header valueNav={3} />
       <main className={styles.main}>
         <div className={styles.containerTable}>
-          <h1>Deslocamento</h1>
+          <div className={styles.container_title}>
+            <h1 className={styles.title_table}>Deslocamento</h1>
+          </div>
           <div className={styles.container_add_button}>
             <CustoncButton />
           </div>
