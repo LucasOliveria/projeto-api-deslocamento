@@ -15,7 +15,17 @@ export default function Clientes() {
           <div className={styles.container_add_button}>
             <CustoncButton />
           </div>
-          <InfoTable />
+          <InfoTable
+            header={
+              [
+                { id: 1, label: "nome" },
+                { id: 2, label: "Nº documento" },
+                { id: 3, label: "Tipo de Documento" },
+                { id: 4, label: "Endereço" },
+                { id: 5, label: "Cidade/UF" }
+              ]
+            }
+          />
         </div>
       </main>
       <Footer />

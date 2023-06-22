@@ -14,7 +14,16 @@ export default function Condutores() {
           <div className={styles.container_add_button}>
             <CustoncButton />
           </div>
-          <InfoTable />
+          <InfoTable
+            header={
+              [
+                { id: 1, label: "nome" },
+                { id: 2, label: "Nº Habilitação" },
+                { id: 3, label: "Categoria" },
+                { id: 4, label: "Vencimento" },
+              ]
+            }
+          />
         </div>
       </main>
       <Footer />

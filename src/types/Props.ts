@@ -1,5 +1,9 @@
-import { Dispatch, SetStateAction } from "react";
+// import { Dispatch, SetStateAction } from "react";
 
 export default interface Props {
-    valueNav: number
+    valueNav?: number
+    header?: {
+        id: number,
+        label: string
+    }[]
 }
