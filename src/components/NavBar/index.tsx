@@ -15,10 +15,6 @@ export default function NavBar({ valueNav }: Props) {
   const [value, setValue] = useState(valueNav);
   const router = useRouter();
 
-  function handleNavigate() {
-    console.log("teste");
-  }
-
   return (
     <Box sx={{ width: "100%" }}>
       <BottomNavigation

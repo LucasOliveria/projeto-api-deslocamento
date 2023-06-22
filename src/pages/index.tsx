@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from '@/components/Header'
 import styles from '@/styles/Home.module.css'
+import Footer from "@/components/Footer";
 
 export default function Home() {
   const [valueNav, setValueNav] = useState(0);
@@ -11,13 +12,9 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.welcome}>
           <h1>Bem-Vindo, Sr. Usuário!</h1>
-          <div className={styles.info}>
-            <p>
-              Gerencie suas informações de clientes, condutores, frota e rotas e facilite sua vida com o Deslocamento App
-            </p>
-          </div>
         </div>
       </main>
+      <Footer />
     </div>
   )
 }

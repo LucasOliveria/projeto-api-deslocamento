@@ -1,6 +1,10 @@
+import Footer from "@/components/Footer";
+import Header from '@/components/Header';
+import InfoTable from "@/components/Table";
+import styles from '@/styles/Home.module.css';
 import { useState } from "react";
-import Header from '@/components/Header'
-import styles from '@/styles/Home.module.css'
+import localStyles from './styles.module.css';
+import CustoncButton from "@/components/CustomButton";
 
 
 export default function Clientes() {
@@ -10,8 +14,14 @@ export default function Clientes() {
     <div className={styles.body}>
       <Header valueNav={valueNav} />
       <main className={styles.main}>
-        <h2>Clientes</h2>
+        <div className={localStyles.containerTable}>
+          <div className={localStyles.container_add_button}>
+            <CustoncButton />
+          </div>
+          <InfoTable />
+        </div>
       </main>
+      <Footer />
     </div>
   )
 }

@@ -20,6 +20,19 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #e6e6e6;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #3f3d56;
+  border-radius: 10px;
+}
+
 .MuiBottomNavigationAction-root:hover {
   transform: scale(1.08);
   transition: all 0.3s;
@@ -43,4 +56,52 @@ body {
 
 .MuiBottomNavigationAction-label.Mui-selected {
   font-size: 1rem;
+}
+
+.MuiButton-root {
+  margin-bottom: 25px;
+  height: 35px;
+  width: 150px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 15px;
+  background-color: #73c927;
+}
+
+.MuiButton-root:hover {
+  background-color: #69b824;
+
+}
+
+.MuiPaper-root {
+  border-radius: 15px;
+  background-color: #e6e6e6;
+}
+
+.MuiTableCell-body {
+  font-size: 1.3rem;
+}
+
+.MuiTableCell-body:last-of-type {
+  cursor: pointer;
+}
+
+.MuiTableCell-head,
+.MuiTablePagination-root,
+.MuiTablePagination-selectLabel,
+.MuiTablePagination-displayedRows {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #3f3d56;
+}
+
+.MuiTablePagination-select {
+  display: flex;
+  width: 25px;
+  padding: 0;
+}
+
+.MuiSelect-icon {
+  color: #ffffff;
 }

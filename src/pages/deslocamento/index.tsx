@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from '@/components/Header'
 import styles from '@/styles/Home.module.css'
+import Footer from "@/components/Footer";
 
 
 export default function Deslocamento() {
@@ -12,6 +13,7 @@ export default function Deslocamento() {
       <main className={styles.main}>
         <h2>Deslocamento</h2>
       </main>
+      <Footer />
     </div>
   )
 }
