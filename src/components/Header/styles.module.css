@@ -12,9 +12,8 @@
   z-index: 1;
 }
 
-.header h1::before {
+.header h1 span {
   color: #85ea2d;
-  content: "Deslocamento ";
 }
 
 .navbar {

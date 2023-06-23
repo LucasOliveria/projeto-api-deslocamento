@@ -1,4 +1,3 @@
-import Props from '@/types/Props';
 import BadgeIcon from '@mui/icons-material/Badge';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import GroupIcon from '@mui/icons-material/Group';
@@ -9,8 +8,9 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import Box from '@mui/material/Box';
 import { useRouter } from 'next/router';
 import { useState } from "react";
+import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 
-export default function NavBar({ valueNav }: Props) {
+export default function NavBar({ valueNav }: { valueNav: number }) {
   const [value, setValue] = useState(valueNav);
   const router = useRouter();
 
@@ -48,6 +48,11 @@ export default function NavBar({ valueNav }: Props) {
           label="Veículo"
           onClick={() => router.push("/veiculos")}
           icon={<DirectionsCarIcon />}
+        />
+        <BottomNavigationAction
+          label=""
+          // onClick={() => router.push("/veiculos")}
+          icon={<ExitToAppOutlinedIcon />}
         />
       </BottomNavigation>
     </Box>

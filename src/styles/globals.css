@@ -58,6 +58,7 @@ body {
   font-size: 1rem;
 }
 
+/*  */
 .MuiButton-root {
   margin-bottom: 25px;
   height: 35px;
@@ -97,12 +98,13 @@ body {
   background-color: #3f3d56;
 }
 
-.MuiTablePagination-select {
-  display: flex;
-  width: 25px;
-  padding: 0;
-}
+/*  */
 
-.MuiSelect-icon {
-  color: #ffffff;
+.MuiBox-root {
+  border-radius: 20px;
+  background-color: #e6e6e6;
+  background-image: url("../assets/logo.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
 }

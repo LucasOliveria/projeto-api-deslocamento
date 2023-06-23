@@ -7,91 +7,59 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import { useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent, Dispatch, SetStateAction } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
-import Props from '@/types/Props';
+import PropsTable from '@/types/PropsTable';
+import format from 'date-fns/format';
+import InfoIcon from '@mui/icons-material/Info';
+import api from '@/services/api';
 
-// interface Column {
-//   id: 'name' | 'code' | 'population' | 'size';
-//   label: string;
-//   minWidth?: number;
-//   align?: 'right';
-//   format?: (value: number) => string;
-// }
 
-// const columns: readonly Column[] = [
-//   { id: 'name', label: 'Name', minWidth: 170 },
-//   { id: 'code', label: 'ISO\u00a0Code', minWidth: 100 },
-//   {
-//     id: 'population',
-//     label: 'Population',
-//     minWidth: 170,
-//     align: 'right',
-//     format: (value: number) => value.toLocaleString('en-US'),
-//   },
-//   {
-//     id: 'size',
-//     label: 'Size\u00a0(km\u00b2)',
-//     minWidth: 50,
-//     align: 'right',
-//     format: (value: number) => value.toLocaleString('en-US'),
-//   }
-// ];
+export default function InfoTable(
+  { header, clients, drivers, displacements, setDetails, setOpen }: PropsTable
+) {
+  // const [page, setPage] = useState(0);
+  // const [rowsPerPage, setRowsPerPage] = useState(10);
 
-// interface Data {
-//   name: string;
-//   code: string;
-//   population: number;
-//   size: number;
-// }
+  // const handleChangePage = (event: unknown, newPage: number) => {
+  //   setPage(newPage);
+  // };
 
-// function createData(
-//   name: string,
-//   code: string,
-//   population: number,
-//   size: number,
-// ): Data {
-//   return { name, code, population, size };
-// }
+  // const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement>) => {
+  //   setRowsPerPage(+event.target.value);
+  //   setPage(0);
+  // };
 
-const rows = [
-  // createData('India', 'IN', 1324171354, 3287263),
-  // createData('China', 'CN', 1403500365, 9596961),
-  // createData('Italy', 'IT', 60483973, 301340),
-  // createData('United States', 'US', 327167434, 9833520),
-  // createData('Canada', 'CA', 37602103, 9984670),
-  // createData('Australia', 'AU', 25475400, 7692024),
-  // createData('Germany', 'DE', 83019200, 357578),
-  // createData('Ireland', 'IE', 4857000, 70273),
-  // createData('Mexico', 'MX', 126577691, 1972550),
-  // createData('Japan', 'JP', 126317000, 377973),
-  // createData('France', 'FR', 67022000, 640679),
-  // createData('United Kingdom', 'GB', 67545757, 242495),
-  // createData('Russia', 'RU', 146793744, 17098246),
-  // createData('Nigeria', 'NG', 200962417, 923768),
-  // createData('Brazil', 'BR', 210147125, 8515767),
-];
+  async function handleDetailsDisplacement(idDriver: number, idCar: number, idClient: number) {
+    try {
+      const driver = await api.get(`/Condutor/${idDriver}`)
+      const car = await api.get(`/Veiculo/${idCar}`)
+      const client = await api.get(`/Cliente/${idClient}`)
 
-export default function InfoTable({ header, clients, drivers }: Props) {
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+      if (setOpen) {
+        setOpen(true)
+      }
 
-  const handleChangePage = (event: unknown, newPage: number) => {
-    setPage(newPage);
-  };
+      if (setDetails) {
+        setDetails({
+          clientName: client.data.nome,
+          driverName: driver.data.nome,
+          plate: car.data.placa
+        })
+      }
 
-  const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement>) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
-    <Paper sx={{ minWidth: '100%', overflow: 'hidden' }}>
+    <Paper sx={{ width: '100%', overflow: 'hidden' }}>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table" >
           <TableHead >
             <TableRow >
-              {header?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((title) => (
+              {header?.map((title) => (
                 <TableCell
                   key={title.id}
                   align='center'
@@ -134,28 +102,76 @@ export default function InfoTable({ header, clients, drivers }: Props) {
 
           {drivers &&
             <TableBody >
-              {drivers?.map((driver) => (
-                <TableRow hover key={driver.id} role="checkbox" tabIndex={-1}>
-                  <TableCell>
-                    {driver.nome}
-                  </TableCell>
-                  <TableCell>
-                    {driver.numeroHabilitacao}
-                  </TableCell>
-                  <TableCell>
-                    {driver.catergoriaHabilitacao}
-                  </TableCell>
-                  <TableCell>
-                    {driver.vencimentoHabilitacao}
-                  </TableCell>
-                  <TableCell>
-                    <EditIcon />
-                  </TableCell>
-                  <TableCell>
-                    <DeleteForeverIcon />
-                  </TableCell>
-                </TableRow>
-              ))}
+              {drivers?.map((driver) => {
+                const formatDate = format(new Date(driver.vencimentoHabilitacao), "dd-MM-yyyy");
+
+                return (
+                  <TableRow hover key={driver.id} role="checkbox" tabIndex={-1}>
+                    <TableCell>
+                      {driver.nome}
+                    </TableCell>
+                    <TableCell>
+                      {driver.numeroHabilitacao}
+                    </TableCell>
+                    <TableCell>
+                      {driver.catergoriaHabilitacao}
+                    </TableCell>
+                    <TableCell>
+                      {formatDate}
+                    </TableCell>
+                    <TableCell>
+                      <EditIcon />
+                    </TableCell>
+                    <TableCell>
+                      <DeleteForeverIcon />
+                    </TableCell>
+                  </TableRow>
+                )
+              })}
+            </TableBody>
+          }
+
+          {displacements &&
+            <TableBody >
+              {displacements?.map((info) => {
+                const formatDateStart = info.inicioDeslocamento && format(new Date(info.inicioDeslocamento), "dd-MM-yyyy  H:mm");
+                const formatDateEnd = info.fimDeslocamento && format(new Date(info.fimDeslocamento), "dd-MM-yyyy  H:mm");
+
+                return (
+                  <TableRow hover key={info.id} role="checkbox" tabIndex={-1}>
+                    <TableCell>
+                      {info.kmInicial}
+                    </TableCell>
+                    <TableCell>
+                      {info.kmFinal}
+                    </TableCell>
+                    <TableCell>
+                      {formatDateStart}
+                    </TableCell>
+                    <TableCell>
+                      {formatDateEnd}
+                    </TableCell>
+                    <TableCell>
+                      {info.motivo}
+                    </TableCell>
+                    <TableCell>
+                      {info.checkList}
+                    </TableCell>
+                    <TableCell>
+                      {info.observacao}
+                    </TableCell>
+                    <TableCell onClick={() => handleDetailsDisplacement(info.idCondutor, info.idVeiculo, info.idCliente)}>
+                      <InfoIcon />
+                    </TableCell>
+                    <TableCell>
+                      <EditIcon />
+                    </TableCell>
+                    <TableCell>
+                      <DeleteForeverIcon />
+                    </TableCell>
+                  </TableRow>
+                )
+              })}
             </TableBody>
           }
         </Table>
