@@ -22,7 +22,6 @@ export default function Deslocamento() {
       const response = await api.get("/Deslocamento");
 
       setDisplacements(response.data);
-
     } catch (error) {
       console.log(error);
 

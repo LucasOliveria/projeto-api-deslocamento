@@ -42,4 +42,11 @@ export default interface PropsTable {
     plate: string
   }>>
   setOpen?: Dispatch<SetStateAction<boolean>>
+  cars?: {
+    id: number,
+    placa: string,
+    marcaModelo: string,
+    anoFabricacao: number,
+    kmAtual: number
+  }[]
 }

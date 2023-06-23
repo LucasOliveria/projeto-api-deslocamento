@@ -16,7 +16,7 @@ import api from '@/services/api';
 
 
 export default function InfoTable(
-  { header, clients, drivers, displacements, setDetails, setOpen }: PropsTable
+  { header, clients, drivers, displacements, setDetails, setOpen, cars }: PropsTable
 ) {
   // const [page, setPage] = useState(0);
   // const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -172,6 +172,32 @@ export default function InfoTable(
                   </TableRow>
                 )
               })}
+            </TableBody>
+          }
+          {cars &&
+            <TableBody >
+              {cars?.map((car) => (
+                <TableRow hover key={car.id} role="checkbox" tabIndex={-1}>
+                  <TableCell>
+                    {car.marcaModelo}
+                  </TableCell>
+                  <TableCell>
+                    {car.placa}
+                  </TableCell>
+                  <TableCell>
+                    {car.kmAtual}
+                  </TableCell>
+                  <TableCell>
+                    {car.anoFabricacao}
+                  </TableCell>
+                  <TableCell>
+                    <EditIcon />
+                  </TableCell>
+                  <TableCell>
+                    <DeleteForeverIcon />
+                  </TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           }
         </Table>

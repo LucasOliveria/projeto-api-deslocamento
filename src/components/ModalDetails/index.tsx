@@ -35,16 +35,16 @@ export default function ModalDetails(
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ fontWeight: 700, fontSize: "1.6rem" }}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
             Detalhes
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2, fontSize: "1.6rem" }}>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             Cliente: {details.clientName}
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2, fontSize: "1.6rem" }}>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             Motorista: {details.driverName}
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2, fontSize: "1.6rem" }}>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             Placa: {details.plate}
           </Typography>
         </Box>

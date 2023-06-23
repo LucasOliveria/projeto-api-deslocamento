@@ -28,13 +28,13 @@
   align-items: flex-start;
   flex-direction: column;
   width: 950px;
-  height: 90%;
-  padding-top: 25px;
+  height: 100%;
+  padding: 20px 0;
 }
 
 .container_title {
   align-self: flex-start;
-  margin-bottom: 45px;
+  margin-bottom: 25px;
   background-image: url("../assets/logo.svg");
   background-repeat: no-repeat;
   background-size: contain;
