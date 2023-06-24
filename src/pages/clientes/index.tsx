@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 export default function Clients() {
   const [clients, setClients] = useState([]);
   const [openAddEditClient, setOpenAddEditClient] = useState(false);
+  const [titleModal, setTitleModal] = useState("");
 
   async function getClients() {
     try {
@@ -35,9 +36,14 @@ export default function Clients() {
           <div className={styles.container_title}>
             <h1 className={styles.title_table}>Clientes</h1>
           </div>
+
           <div className={styles.container_add_button}>
-            <CustoncButtonOpen title="ADICIONAR" setOpen={setOpenAddEditClient} />
+            <CustoncButtonOpen
+              setTitleModal={setTitleModal}
+              setOpenAddEditModal={setOpenAddEditClient}
+            />
           </div>
+
           <InfoTable
             header={
               [
@@ -54,10 +60,15 @@ export default function Clients() {
           />
         </div>
       </main>
+
       <Footer />
+
       <ModalAddEditClient
         openAddEditClient={openAddEditClient}
         setOpenAddEditClient={setOpenAddEditClient}
+        titleModal={titleModal}
+        getClients={getClients}
+      // clients={clients}
       />
     </div>
   )

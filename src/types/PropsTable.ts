@@ -49,4 +49,6 @@ export default interface PropsTable {
     anoFabricacao: number,
     kmAtual: number
   }[]
+  setOpenAddEditModal?: Dispatch<SetStateAction<boolean>>
+  setTitleModal?: Dispatch<SetStateAction<string>>
 }

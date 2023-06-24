@@ -108,14 +108,13 @@ body {
 }
 
 /*  */
-
 .MuiBox-root {
   border-radius: 20px;
-  background-color: #dddddd;
-  /* background-image: url("");
+  background-color: hsl(0, 0%, 87%);
+  background-image: url("../assets/logo2.svg");
   background-repeat: no-repeat;
-  background-size: 190px;
-  background-position: right; */
+  background-size: 180px;
+  background-position: right;
 }
 
 .MuiTypography-root {
@@ -147,6 +146,11 @@ body {
 
 .MuiTextField-root {
   width: 300px;
+}
+
+.MuiInput-root {
+  font-size: 1.6rem;
+  color: #1b1b1b;
 }
 
 .MuiInputLabel-root {
