@@ -16,8 +16,25 @@
   color: #85ea2d;
 }
 
-.navbar {
-  width: 450px;
-  display: flex;
-  gap: 10px;
+
+@media (max-width:915px) {
+  .header {
+    flex-direction: column;
+    justify-content: center;
+    height: 120px;
+    padding-top: 10px;
+  }
+
+  .header h1 {
+    font-size: 29px;
+  }
+}
+
+@media (max-width:720px) {
+  .header {
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 0 20px;
+
+  }
 }

@@ -17,7 +17,9 @@ const style = {
 
 export default function ModalDetails(
   { open, setOpen, details }: {
-    open: boolean, setOpen: Dispatch<SetStateAction<boolean>>, details: {
+    open: boolean,
+    setOpen: Dispatch<SetStateAction<boolean>>,
+    details: {
       clientName: string
       driverName: string
       plate: string

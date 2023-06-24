@@ -161,7 +161,7 @@ export default function InfoTable(
                       {info.observacao}
                     </TableCell>
                     <TableCell onClick={() => handleDetailsDisplacement(info.idCondutor, info.idVeiculo, info.idCliente)}>
-                      <InfoIcon />
+                      <InfoIcon sx={{ cursor: "pointer" }} />
                     </TableCell>
                     <TableCell>
                       <EditIcon />

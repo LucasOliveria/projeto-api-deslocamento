@@ -1,0 +1,54 @@
+.nav_bar {
+  background: none;
+}
+
+.close_icon_menu,
+.open_icon_menu {
+  display: none;
+}
+
+.bottons_nav {
+  display: flex;
+}
+
+
+@media (max-width:720px) {
+
+  .close_icon_menu,
+  .open_icon_menu {
+    display: block;
+    font-size: 3.5rem;
+  }
+
+  .close_icon_menu {
+    position: absolute;
+    top: 45px;
+    right: 20px;
+  }
+
+  .modal_fullscreen {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    background-color: #1b1b1b;
+    position: absolute;
+    top: 0;
+    right: 0;
+    overflow-y: hidden;
+  }
+
+
+  .modal_fullscreen .bottons_nav {
+    display: flex;
+  }
+
+  .bottons_nav {
+    display: none;
+    width: 100vw;
+    height: 50vh;
+    flex-direction: column;
+    margin-top: 50px;
+  }
+
+
+}

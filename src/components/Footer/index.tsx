@@ -5,7 +5,6 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 export default function Footer() {
   return (
     <footer className={styles.footer}>
-      <div className={styles.line}></div>
       <div className={styles.contact}>
         <h4>CONTATOS</h4>
         <div>
