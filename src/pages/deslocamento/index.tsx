@@ -1,4 +1,4 @@
-import CustoncButton from "@/components/CustomButton";
+import CustoncButton from "@/components/CustomButtonOpen";
 import Footer from "@/components/Footer";
 import Header from '@/components/Header';
 import ModalDetails from "@/components/ModalDetails";
@@ -42,7 +42,7 @@ export default function Deslocamento() {
             <h1 className={styles.title_table}>Deslocamento</h1>
           </div>
           <div className={styles.container_add_button}>
-            <CustoncButton />
+            <CustoncButton title="ADICIONAR" />
           </div>
           <InfoTable
             setOpen={setOpen}

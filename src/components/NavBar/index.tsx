@@ -44,54 +44,47 @@ export default function NavBar({ valueNav }: { valueNav: number }) {
           className={styles.open_icon_menu}
         />
       }
-      <div className={styles.content_bottons}>
-        <BottomNavigation
-          showLabels
-          className={styles.bottons_nav}
-          sx={{ backgroundColor: "#1b1b1b" }}
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-          }}
-        >
-          <BottomNavigationAction
-            label="Home"
-            className={styles.botton_nav}
-            onClick={() => router.push("/")}
-            icon={<HomeIcon />}
-          />
-          <BottomNavigationAction
-            label="Clientes"
-            className={styles.botton_nav}
-            onClick={() => router.push("/clientes")}
-            icon={<GroupIcon />}
-          />
-          <BottomNavigationAction
-            label="Condutores"
-            className={styles.botton_nav}
-            onClick={() => router.push("/condutores")}
-            icon={<BadgeIcon />}
-          />
-          <BottomNavigationAction
-            label="Deslocamento"
-            className={styles.botton_nav}
-            onClick={() => router.push("/deslocamento")}
-            icon={<MapOutlinedIcon />}
-          />
-          <BottomNavigationAction
-            label="Veículo"
-            className={styles.botton_nav}
-            onClick={() => router.push("/veiculos")}
-            icon={<DirectionsCarIcon />}
-          />
-          <BottomNavigationAction
-            label=""
-            className={styles.botton_nav}
-            onClick={() => router.push("/")}
-            icon={<ExitToAppOutlinedIcon />}
-          />
-        </BottomNavigation>
-      </div>
+
+      <BottomNavigation
+        showLabels
+        className={styles.bottons_nav}
+        sx={{ backgroundColor: "#1b1b1b" }}
+        value={value}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+      >
+        <BottomNavigationAction
+          label="Home"
+          onClick={() => router.push("/")}
+          icon={<HomeIcon />}
+        />
+        <BottomNavigationAction
+          label="Clientes"
+          onClick={() => router.push("/clientes")}
+          icon={<GroupIcon />}
+        />
+        <BottomNavigationAction
+          label="Condutores"
+          onClick={() => router.push("/condutores")}
+          icon={<BadgeIcon />}
+        />
+        <BottomNavigationAction
+          label="Deslocamento"
+          onClick={() => router.push("/deslocamento")}
+          icon={<MapOutlinedIcon />}
+        />
+        <BottomNavigationAction
+          label="Veículo"
+          onClick={() => router.push("/veiculos")}
+          icon={<DirectionsCarIcon />}
+        />
+        <BottomNavigationAction
+          label=""
+          onClick={() => router.push("/")}
+          icon={<ExitToAppOutlinedIcon />}
+        />
+      </BottomNavigation>
     </Box>
   );
 }

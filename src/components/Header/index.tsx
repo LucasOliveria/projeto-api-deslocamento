@@ -6,7 +6,7 @@ export default function Header({ valueNav }: { valueNav: number }) {
   return (
     <header className={styles.header}>
       <h1><span>Deslocamento</span> App</h1>
-      <nav >
+      <nav>
         <NavBar valueNav={valueNav} />
       </nav>
     </header>

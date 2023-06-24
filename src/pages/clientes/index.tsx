@@ -1,6 +1,7 @@
-import CustoncButton from "@/components/CustomButton";
+import CustoncButtonOpen from "@/components/CustomButtonOpen";
 import Footer from "@/components/Footer";
 import Header from '@/components/Header';
+import ModalAddEditClient from "@/components/ModalAddEditClient";
 import InfoTable from "@/components/Table";
 import api from "@/services/api";
 import styles from '@/styles/Home.module.css';
@@ -9,6 +10,7 @@ import { useEffect, useState } from "react";
 
 export default function Clients() {
   const [clients, setClients] = useState([]);
+  const [openAddEditClient, setOpenAddEditClient] = useState(false);
 
   async function getClients() {
     try {
@@ -34,7 +36,7 @@ export default function Clients() {
             <h1 className={styles.title_table}>Clientes</h1>
           </div>
           <div className={styles.container_add_button}>
-            <CustoncButton />
+            <CustoncButtonOpen title="ADICIONAR" setOpen={setOpenAddEditClient} />
           </div>
           <InfoTable
             header={
@@ -53,6 +55,10 @@ export default function Clients() {
         </div>
       </main>
       <Footer />
+      <ModalAddEditClient
+        openAddEditClient={openAddEditClient}
+        setOpenAddEditClient={setOpenAddEditClient}
+      />
     </div>
   )
 }

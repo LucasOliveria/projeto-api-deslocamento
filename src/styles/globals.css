@@ -111,11 +111,11 @@ body {
 
 .MuiBox-root {
   border-radius: 20px;
-  background-color: #e6e6e6;
-  background-image: url("../assets/logo.svg");
+  background-color: #dddddd;
+  /* background-image: url("");
   background-repeat: no-repeat;
   background-size: 190px;
-  background-position: right;
+  background-position: right; */
 }
 
 .MuiTypography-root {
@@ -141,5 +141,16 @@ body {
   .MuiBottomNavigationAction-label.Mui-selected {
     font-size: 0.9rem;
   }
+}
 
+/*  */
+
+.MuiTextField-root {
+  width: 300px;
+}
+
+.MuiInputLabel-root {
+  font-size: 1.4rem;
+  color: #3f3d56;
+  font-weight: 700;
 }

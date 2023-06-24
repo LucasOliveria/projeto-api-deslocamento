@@ -1,4 +1,4 @@
-import CustoncButton from "@/components/CustomButton";
+import CustoncButton from "@/components/CustomButtonOpen";
 import Footer from "@/components/Footer";
 import Header from '@/components/Header';
 import InfoTable from "@/components/Table";
