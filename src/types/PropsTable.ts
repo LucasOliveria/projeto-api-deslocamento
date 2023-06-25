@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 
 export default interface PropsTable {
-  header?: {
+  header: {
     id: number,
     label: string
   }[]
@@ -20,7 +20,6 @@ export default interface PropsTable {
     uf: string
   }[]
   setOpenAddEditClient?: Dispatch<SetStateAction<boolean>>
-  getClients?: () => Promise<void>;
   setFormEditClient?: Dispatch<SetStateAction<{
     name: string,
     adress: string,
@@ -40,7 +39,6 @@ export default interface PropsTable {
     vencimentoHabilitacao: string,
   }[]
   setOpenAddEditDriver?: Dispatch<SetStateAction<boolean>>
-  getDrivers?: () => Promise<void>;
   setFormEditDriver?: Dispatch<SetStateAction<{
     category: string
     expiresIn: string
@@ -77,9 +75,15 @@ export default interface PropsTable {
     anoFabricacao: number,
     kmAtual: number
   }[]
+  setOpenAddEditCars?: Dispatch<SetStateAction<boolean>>
+  setFormEditCar?: Dispatch<SetStateAction<{
+    brandModel: string
+    year: number
+    currentKm: number
+  }>>
 
 
-  setTitleModal?: Dispatch<SetStateAction<string>>
+  setTitleModal: Dispatch<SetStateAction<string>>
   setOpenModalDelete: Dispatch<SetStateAction<boolean>>
   setSaveId: Dispatch<SetStateAction<number>>
 }

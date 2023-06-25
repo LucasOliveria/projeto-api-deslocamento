@@ -5,6 +5,7 @@ import PropsAddButtons from '@/types/PropsAddButtons';
 export default function CustomButtonOpen({
   setOpenAddEditClient,
   setOpenAddEditDriver,
+  setOpenAddEditCars,
   setTitleModal
 }: PropsAddButtons) {
 
@@ -18,6 +19,12 @@ export default function CustomButtonOpen({
     if (setOpenAddEditDriver) {
       setOpenAddEditDriver(true);
       setTitleModal("Cadastrar Condutor");
+      return;
+    }
+
+    if (setOpenAddEditCars) {
+      setOpenAddEditCars(true);
+      setTitleModal("Cadastrar Veículo");
       return;
     }
   }

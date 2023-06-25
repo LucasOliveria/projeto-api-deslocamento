@@ -24,9 +24,11 @@ export default function InfoTable(
     cars,
     setOpenAddEditClient,
     setOpenAddEditDriver,
-    setTitleModal,
+    setOpenAddEditCars,
     setFormEditClient,
     setFormEditDriver,
+    setFormEditCar,
+    setTitleModal,
     setOpenModalDelete,
     setSaveId
   }: PropsTable
@@ -69,6 +71,25 @@ export default function InfoTable(
         state: client.data.uf
       });
 
+    } catch (error: any) {
+      console.log(error.response.data);
+    }
+  }
+
+  async function handleOpenEditCar(id: number) {
+    setOpenAddEditCars && setOpenAddEditCars(true);
+    setTitleModal && setTitleModal("Editar Veículo");
+
+    setSaveId(id);
+
+    try {
+      const car = await api.get(`/Veiculo/${id}`);
+
+      setFormEditCar && setFormEditCar({
+        brandModel: car.data.marcaModelo,
+        year: car.data.anoFabricacao,
+        currentKm: car.data.kmAtual
+      })
     } catch (error: any) {
       console.log(error.response.data);
     }
@@ -135,10 +156,14 @@ export default function InfoTable(
                     {client.cidade}/{client.uf}
                   </TableCell>
                   <TableCell>
-                    <EditIcon onClick={() => handleOpenEditClient(client.id)} />
+                    <EditIcon
+                      onClick={() => handleOpenEditClient(client.id)}
+                    />
                   </TableCell>
                   <TableCell>
-                    <DeleteForeverIcon onClick={() => handleOpenDeleteModal(client.id)} />
+                    <DeleteForeverIcon
+                      onClick={() => handleOpenDeleteModal(client.id)}
+                    />
                   </TableCell>
                 </TableRow>
               ))}
@@ -164,10 +189,14 @@ export default function InfoTable(
                       {formatDate}
                     </TableCell>
                     <TableCell>
-                      <EditIcon onClick={() => handleOpenEditDriver(driver.id)} />
+                      <EditIcon
+                        onClick={() => handleOpenEditDriver(driver.id)}
+                      />
                     </TableCell>
                     <TableCell>
-                      <DeleteForeverIcon onClick={() => handleOpenDeleteModal(driver.id)} />
+                      <DeleteForeverIcon
+                        onClick={() => handleOpenDeleteModal(driver.id)}
+                      />
                     </TableCell>
                   </TableRow>
                 )
@@ -234,10 +263,12 @@ export default function InfoTable(
                     {car.anoFabricacao}
                   </TableCell>
                   <TableCell>
-                    <EditIcon />
+                    <EditIcon onClick={() => handleOpenEditCar(car.id)} />
                   </TableCell>
                   <TableCell>
-                    <DeleteForeverIcon />
+                    <DeleteForeverIcon
+                      onClick={() => handleOpenDeleteModal(car.id)}
+                    />
                   </TableCell>
                 </TableRow>
               ))}

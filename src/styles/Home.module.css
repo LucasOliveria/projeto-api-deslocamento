@@ -89,8 +89,7 @@
 
  @media (min-width:600px) and (max-width: 915px) {
    .welcome {
-     background-size: 300px;
-     background-position: right 20% bottom 20%;
+     background-size: 30%;
    }
 
    .title_table,

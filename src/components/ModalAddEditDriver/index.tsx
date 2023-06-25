@@ -222,20 +222,21 @@ export default function ModalAddEditDriver(
                   </option>
                 ))}
               </TextField>
-
-              <label
-                className={styles.label_date}
-                htmlFor="expiresIn">
-                Data de Vencimento
-              </label>
-              <input
-                className={styles.input_date}
-                id="expiresIn"
-                type="date"
-                name="expiresIn"
-                value={formAdd.expiresIn}
-                onChange={handleChanceInput}
-              />
+              <div className={styles.container_date}>
+                <label
+                  className={styles.label_date}
+                  htmlFor="expiresIn">
+                  Data de Vencimento
+                </label>
+                <input
+                  className={styles.input_date}
+                  id="expiresIn"
+                  type="date"
+                  name="expiresIn"
+                  value={formAdd.expiresIn}
+                  onChange={handleChanceInput}
+                />
+              </div>
               <SendButton />
             </form>
           }
@@ -262,19 +263,21 @@ export default function ModalAddEditDriver(
                   </option>
                 ))}
               </TextField>
-              <label
-                className={styles.label_date}
-                htmlFor="expiresIn">
-                Data de Vencimento
-              </label>
-              <input
-                className={styles.input_date}
-                id="expiresIn"
-                type="date"
-                name="expiresIn"
-                value={formEdit.expiresIn}
-                onChange={handleChanceInput}
-              />
+              <div className={styles.container_date}>
+                <label
+                  className={styles.label_date}
+                  htmlFor="expiresIn">
+                  Data de Vencimento
+                </label>
+                <input
+                  className={styles.input_date}
+                  id="expiresIn"
+                  type="date"
+                  name="expiresIn"
+                  value={formEdit.expiresIn}
+                  onChange={handleChanceInput}
+                />
+              </div>
               <SendButton />
             </form>
           }

@@ -43,7 +43,6 @@ export default function ModalAddEditClient(
   });
 
   async function addClient() {
-
     const { name, docNumber, docType, adress, houseNumber, neighborhood, city, state } = formAdd;
 
     if (!name || !docNumber || !docType || !adress || !houseNumber || !neighborhood || !city || !state) {
@@ -83,7 +82,6 @@ export default function ModalAddEditClient(
   }
 
   async function editClient() {
-
     const { name, adress, houseNumber, neighborhood, city, state } = formEdit;
 
     if (!name || !adress || !houseNumber || !neighborhood || !city || !state) {
@@ -141,6 +139,17 @@ export default function ModalAddEditClient(
 
   function handleClose() {
     setOpenAddEditClient(false);
+
+    setFormAdd({
+      name: "",
+      docNumber: "",
+      docType: "",
+      adress: "",
+      houseNumber: "",
+      neighborhood: "",
+      city: "",
+      state: ""
+    });
   }
 
   return (

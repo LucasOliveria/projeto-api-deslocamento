@@ -71,14 +71,15 @@ export default function ModalDeleteDriver(
             sx={{ position: "absolute", top: 5, right: 12, cursor: "pointer" }}
             onClick={handleClose}
           />
-          <h2 className={styles.h2_modal_delete}>Deseja excluir o condutor?</h2>
+          <h2 className={styles.h2_modal_delete}>
+            Deseja excluir o condutor?
+          </h2>
 
           <Stack spacing={2} direction="row">
             <Button
               variant="contained"
               color='inherit'
               onClick={handleDeleteDriver}
-
             >
               SIM
             </Button>

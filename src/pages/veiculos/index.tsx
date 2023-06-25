@@ -1,14 +1,30 @@
 import CustoncButton from "@/components/CustomButtonOpen";
 import Footer from "@/components/Footer";
 import Header from '@/components/Header';
+import ModalAddEditCar from "@/components/ModalAddEditCar";
+import ModalDeleteCar from "@/components/ModalDeleteCar";
 import InfoTable from "@/components/Table";
 import api from "@/services/api";
 import styles from '@/styles/Home.module.css';
 import { useEffect, useState } from "react";
 
 
-export default function Veiculos() {
+export default function Cars() {
   const [cars, setCars] = useState([]);
+
+  const [openAddEditCars, setOpenAddEditCars] = useState(false);
+
+  const [titleModal, setTitleModal] = useState("");
+
+  const [formEdit, setFormEdit] = useState({
+    brandModel: "",
+    year: 0,
+    currentKm: 0
+  });
+
+  const [openModalDelete, setOpenModalDelete] = useState(false);
+
+  const [saveId, setSaveId] = useState(0);
 
   async function getCars() {
     try {
@@ -17,7 +33,6 @@ export default function Veiculos() {
       setCars(response.data);
     } catch (error) {
       console.log(error);
-
     }
   }
 
@@ -28,14 +43,20 @@ export default function Veiculos() {
   return (
     <div className={styles.body}>
       <Header valueNav={4} />
+
       <main className={styles.main}>
         <div className={styles.containerTable}>
           <div className={styles.container_title}>
             <h1 className={styles.title_table}>Veículos</h1>
           </div>
+
           <div className={styles.container_add_button}>
-            <CustoncButton />
+            <CustoncButton
+              setTitleModal={setTitleModal}
+              setOpenAddEditCars={setOpenAddEditCars}
+            />
           </div>
+
           <InfoTable
             header={
               [
@@ -48,10 +69,34 @@ export default function Veiculos() {
               ]
             }
             cars={cars}
+            setOpenAddEditCars={setOpenAddEditCars}
+            setTitleModal={setTitleModal}
+            setFormEditCar={setFormEdit}
+            setOpenModalDelete={setOpenModalDelete}
+            setSaveId={setSaveId}
           />
+
         </div>
       </main>
+
       <Footer />
+
+      <ModalAddEditCar
+        openAddEditCars={openAddEditCars}
+        setOpenAddEditCars={setOpenAddEditCars}
+        titleModal={titleModal}
+        getCars={getCars}
+        formEdit={formEdit}
+        setFormEdit={setFormEdit}
+        saveId={saveId}
+      />
+
+      <ModalDeleteCar
+        openModalDelete={openModalDelete}
+        setOpenModalDelete={setOpenModalDelete}
+        getCars={getCars}
+        saveId={saveId}
+      />
     </div>
   )
 }

@@ -10,13 +10,18 @@ import { useEffect, useState } from "react";
 
 export default function Drivers() {
   const [drivers, setDrivers] = useState([]);
+
   const [openAddEditDriver, setOpenAddEditDriver] = useState(false);
+
   const [titleModal, setTitleModal] = useState("");
+
   const [formEdit, setFormEdit] = useState({
     category: "",
     expiresIn: "",
   });
-  const [openModalDelete, setOpenModalDelete] = useState(false)
+
+  const [openModalDelete, setOpenModalDelete] = useState(false);
+
   const [saveId, setSaveId] = useState(0);
 
   async function getDrivers() {

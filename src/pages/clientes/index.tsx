@@ -11,8 +11,11 @@ import { useEffect, useState } from "react";
 
 export default function Clients() {
   const [clients, setClients] = useState([]);
+
   const [openAddEditClient, setOpenAddEditClient] = useState(false);
+
   const [titleModal, setTitleModal] = useState("");
+
   const [formEdit, setFormEdit] = useState({
     name: "",
     adress: "",
@@ -21,7 +24,9 @@ export default function Clients() {
     city: "",
     state: ""
   });
-  const [openModalDelete, setOpenModalDelete] = useState(false)
+
+  const [openModalDelete, setOpenModalDelete] = useState(false);
+
   const [saveId, setSaveId] = useState(0);
 
   async function getClients() {

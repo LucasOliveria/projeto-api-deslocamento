@@ -21,25 +21,25 @@ const style = {
   left: '50%',
 };
 
-export default function ModalDeleteClient(
+export default function ModalDeleteCar(
   {
     openModalDelete,
     setOpenModalDelete,
-    getClients,
+    getCars,
     saveId
   }
     :
     {
       openModalDelete: boolean,
       setOpenModalDelete: Dispatch<SetStateAction<boolean>>,
-      getClients: () => Promise<void>
+      getCars: () => Promise<void>
       saveId: number
     }
 ) {
 
-  async function handleDeleteClient() {
+  async function handleDeleteDriver() {
     try {
-      await api.delete(`/Cliente/${saveId}`, {
+      await api.delete(`/Veiculo/${saveId}`, {
         data: {
           id: saveId
         }
@@ -47,16 +47,16 @@ export default function ModalDeleteClient(
 
       setOpenModalDelete(false);
 
-      getClients();
+      getCars();
 
-      console.log("Cliente Excluído");
+      console.log("Veículo Excluído");
     } catch (error: any) {
-      console.log("Cliente não excluído. Erro ao atualizar as entradas");
+      console.log("Veículo não excluído. Erro ao atualizar as entradas");
     }
   }
 
   function handleClose() {
-    setOpenModalDelete(false)
+    setOpenModalDelete(false);
   }
 
   return (
@@ -72,14 +72,14 @@ export default function ModalDeleteClient(
             onClick={handleClose}
           />
           <h2 className={styles.h2_modal_delete}>
-            Deseja excluir o cliente?
+            Deseja excluir o veículo?
           </h2>
 
           <Stack spacing={2} direction="row">
             <Button
               variant="contained"
               color='inherit'
-              onClick={handleDeleteClient}
+              onClick={handleDeleteDriver}
             >
               SIM
             </Button>
