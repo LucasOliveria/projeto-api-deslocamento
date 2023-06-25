@@ -51,7 +51,7 @@ export default function ModalDeleteClient(
 
       console.log("Cliente Excluído");
     } catch (error: any) {
-      console.log(error.response.data);
+      console.log("Cliente não excluído. Erro ao atualizar as entradas");
     }
   }
 
