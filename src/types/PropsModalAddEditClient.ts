@@ -4,7 +4,7 @@ export default interface PropsModalAddEditClient {
   openAddEditClient: boolean
   setOpenAddEditModal: Dispatch<SetStateAction<boolean>>
   titleModal: string
-  getClients: () => Promise<void>;
+  getClients: () => Promise<void>
   formEdit: {
     name: string,
     adress: string,

@@ -94,6 +94,7 @@ export default function Clients() {
       <ModalDeleteClient
         openModalDelete={openModalDelete}
         setOpenModalDelete={setOpenModalDelete}
+        getClients={getClients}
         saveId={saveId}
       />
     </div>

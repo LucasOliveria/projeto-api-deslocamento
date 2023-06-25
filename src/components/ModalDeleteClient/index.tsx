@@ -22,24 +22,32 @@ const style = {
 };
 
 export default function ModalDeleteClient(
-  { openModalDelete, setOpenModalDelete, saveId }: {
-    openModalDelete: boolean,
-    setOpenModalDelete: Dispatch<SetStateAction<boolean>>,
-    saveId: number
+  {
+    openModalDelete,
+    setOpenModalDelete,
+    getClients,
+    saveId
   }
+    :
+    {
+      openModalDelete: boolean,
+      setOpenModalDelete: Dispatch<SetStateAction<boolean>>,
+      getClients: () => Promise<void>
+      saveId: number
+    }
 ) {
 
   async function handleDeleteClient() {
-    const requestBody = {
-      id: saveId
-    }
-
     try {
       await api.delete(`/Cliente/${saveId}`, {
-        data: requestBody
+        data: {
+          id: saveId
+        }
       });
 
       setOpenModalDelete(false);
+
+      getClients();
 
       console.log("Cliente Excluído");
     } catch (error) {
