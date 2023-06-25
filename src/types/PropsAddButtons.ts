@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 
 export default interface PropsAddButtons {
-  setOpenAddEditModal?: Dispatch<SetStateAction<boolean>>
-  setTitleModal?: Dispatch<SetStateAction<string>>
+  setOpenAddEditClient?: Dispatch<SetStateAction<boolean>>
+  setOpenAddEditDriver?: Dispatch<SetStateAction<boolean>>
+  setTitleModal: Dispatch<SetStateAction<string>>
 }

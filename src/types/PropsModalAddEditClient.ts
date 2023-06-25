@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 
 export default interface PropsModalAddEditClient {
   openAddEditClient: boolean
-  setOpenAddEditModal: Dispatch<SetStateAction<boolean>>
+  setOpenAddEditClient: Dispatch<SetStateAction<boolean>>
   titleModal: string
   getClients: () => Promise<void>
   formEdit: {

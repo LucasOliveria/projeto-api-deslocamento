@@ -19,18 +19,9 @@ export default interface PropsTable {
     cidade: string,
     uf: string
   }[]
-  setOpenAddEditModal?: Dispatch<SetStateAction<boolean>>
-  setTitleModal?: Dispatch<SetStateAction<string>>
+  setOpenAddEditClient?: Dispatch<SetStateAction<boolean>>
   getClients?: () => Promise<void>;
-  formEdit?: {
-    name: string,
-    adress: string,
-    houseNumber: string,
-    neighborhood: string,
-    city: string,
-    state: string
-  }
-  setFormEdit?: Dispatch<SetStateAction<{
+  setFormEditClient?: Dispatch<SetStateAction<{
     name: string,
     adress: string,
     houseNumber: string,
@@ -38,7 +29,6 @@ export default interface PropsTable {
     city: string,
     state: string
   }>>
-  setSaveId: Dispatch<SetStateAction<number>>
   setOpenModalDelete?: Dispatch<SetStateAction<boolean>>
 
 
@@ -50,6 +40,12 @@ export default interface PropsTable {
     catergoriaHabilitacao: string,
     vencimentoHabilitacao: string,
   }[]
+  setOpenAddEditDriver?: Dispatch<SetStateAction<boolean>>
+  getDrivers?: () => Promise<void>;
+  setFormEditDriver?: Dispatch<SetStateAction<{
+    category: string
+    expiresIn: string
+  }>>
 
 
 
@@ -82,4 +78,8 @@ export default interface PropsTable {
     anoFabricacao: number,
     kmAtual: number
   }[]
+
+
+  setTitleModal?: Dispatch<SetStateAction<string>>
+  setSaveId: Dispatch<SetStateAction<number>>
 }

@@ -37,15 +37,11 @@ body {
   font-size: 3.6rem;
 }
 
-.MuiBottomNavigationAction-root,
-.MuiTableCell-body:last-of-type,
-.MuiTableCell-body:nth-last-child(2) {
+.MuiBottomNavigationAction-root {
   transition: all 0.3s;
 }
 
-.MuiBottomNavigationAction-root:hover,
-.MuiTableCell-body:last-of-type:hover,
-.MuiTableCell-body:nth-last-child(2):hover {
+.MuiBottomNavigationAction-root:hover {
   transform: scale(1.08);
 }
 
@@ -108,6 +104,17 @@ body {
   background-color: #3f3d56;
   z-index: 0;
 }
+
+
+/* .MuiTableCell-body:last-of-type,
+.MuiTableCell-body:nth-last-child(2) {
+  transition: all 0.3s;
+}
+
+.MuiTableCell-body:last-of-type:hover,
+.MuiTableCell-body:nth-last-child(2):hover {
+  background-color: #73c927;
+} */
 
 /*  */
 .MuiBox-root {

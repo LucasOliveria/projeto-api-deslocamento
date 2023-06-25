@@ -50,8 +50,8 @@ export default function ModalDeleteClient(
       getClients();
 
       console.log("Cliente Excluído");
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      console.log(error.response.data);
     }
   }
 

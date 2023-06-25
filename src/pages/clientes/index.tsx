@@ -13,7 +13,6 @@ export default function Clients() {
   const [clients, setClients] = useState([]);
   const [openAddEditClient, setOpenAddEditClient] = useState(false);
   const [titleModal, setTitleModal] = useState("");
-  const [saveId, setSaveId] = useState(0);
   const [formEdit, setFormEdit] = useState({
     name: "",
     adress: "",
@@ -22,17 +21,16 @@ export default function Clients() {
     city: "",
     state: ""
   });
-
   const [openModalDelete, setOpenModalDelete] = useState(false)
+  const [saveId, setSaveId] = useState(0);
 
   async function getClients() {
     try {
       const response = await api.get("/Cliente");
 
       setClients(response.data);
-    } catch (error) {
-      console.log(error);
-
+    } catch (error: any) {
+      console.log(error.response.data);
     }
   }
 
@@ -53,7 +51,7 @@ export default function Clients() {
           <div className={styles.container_add_button}>
             <CustomButtonOpen
               setTitleModal={setTitleModal}
-              setOpenAddEditModal={setOpenAddEditClient}
+              setOpenAddEditClient={setOpenAddEditClient}
             />
           </div>
 
@@ -70,9 +68,9 @@ export default function Clients() {
               ]
             }
             clients={clients}
-            setOpenAddEditModal={setOpenAddEditClient}
+            setOpenAddEditClient={setOpenAddEditClient}
             setTitleModal={setTitleModal}
-            setFormEdit={setFormEdit}
+            setFormEditClient={setFormEdit}
             setOpenModalDelete={setOpenModalDelete}
             setSaveId={setSaveId}
           />
@@ -83,7 +81,7 @@ export default function Clients() {
 
       <ModalAddEditClient
         openAddEditClient={openAddEditClient}
-        setOpenAddEditModal={setOpenAddEditClient}
+        setOpenAddEditClient={setOpenAddEditClient}
         titleModal={titleModal}
         getClients={getClients}
         formEdit={formEdit}

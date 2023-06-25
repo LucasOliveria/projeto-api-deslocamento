@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import SendButton from '../SendButton';
-import styles from "./styles.module.css";
+import styles from "../../styles/global.module.css";
 
 const style = {
   maxWidth: 400,
@@ -24,7 +24,7 @@ const style = {
 export default function ModalAddEditClient(
   {
     openAddEditClient,
-    setOpenAddEditModal,
+    setOpenAddEditClient,
     titleModal,
     getClients,
     formEdit,
@@ -64,20 +64,20 @@ export default function ModalAddEditClient(
 
       getClients();
 
-      // setFormAdd({
-      //   name: "",
-      //   docNumber: "",
-      //   docType: "",
-      //   adress: "",
-      //   houseNumber: "",
-      //   neighborhood: "",
-      //   city: "",
-      //   state: ""
-      // });
+      setFormAdd({
+        name: "",
+        docNumber: "",
+        docType: "",
+        adress: "",
+        houseNumber: "",
+        neighborhood: "",
+        city: "",
+        state: ""
+      });
 
       return console.log("Cliente cadastrado com sucesso!");
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      console.log(error.response.data);
     }
 
   }
@@ -115,8 +115,8 @@ export default function ModalAddEditClient(
       handleClose();
 
       return console.log("Cliente atualizado com sucesso!");
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      console.log(error.response.data);
     }
 
   }
@@ -130,7 +130,6 @@ export default function ModalAddEditClient(
     }
 
     await editClient();
-
   }
 
   function handleChanceInput(event: ChangeEvent<HTMLInputElement>) {
@@ -141,7 +140,7 @@ export default function ModalAddEditClient(
   }
 
   function handleClose() {
-    setOpenAddEditModal(false);
+    setOpenAddEditClient(false);
   }
 
   return (

@@ -2,12 +2,23 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import PropsAddButtons from '@/types/PropsAddButtons';
 
-export default function CustomButtonOpen({ setOpenAddEditModal, setTitleModal }: PropsAddButtons) {
+export default function CustomButtonOpen({
+  setOpenAddEditClient,
+  setOpenAddEditDriver,
+  setTitleModal
+}: PropsAddButtons) {
 
   function handleOpenModal() {
-    if (setOpenAddEditModal && setTitleModal) {
-      setOpenAddEditModal(true);
-      setTitleModal("Cadastrar Cliente")
+    if (setOpenAddEditClient) {
+      setOpenAddEditClient(true);
+      setTitleModal("Cadastrar Cliente");
+      return;
+    }
+
+    if (setOpenAddEditDriver) {
+      setOpenAddEditDriver(true);
+      setTitleModal("Cadastrar Condutor");
+      return;
     }
   }
 
