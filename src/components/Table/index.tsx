@@ -167,7 +167,7 @@ export default function InfoTable(
                       <EditIcon onClick={() => handleOpenEditDriver(driver.id)} />
                     </TableCell>
                     <TableCell>
-                      <DeleteForeverIcon />
+                      <DeleteForeverIcon onClick={() => handleOpenDeleteModal(driver.id)} />
                     </TableCell>
                   </TableRow>
                 )

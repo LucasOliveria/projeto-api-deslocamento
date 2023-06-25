@@ -22,6 +22,53 @@ const style = {
   transform: 'translate(-50%, -50%)',
 };
 
+const currencies = [
+  {
+    id: "0",
+    label: ''
+  },
+  {
+    id: "A",
+    label: 'A'
+  },
+  {
+    id: "B",
+    label: 'B',
+  },
+  {
+    id: "C",
+    label: 'C',
+  },
+  {
+    id: "D",
+    label: 'D',
+  },
+  {
+    id: "E",
+    label: 'E',
+  },
+  {
+    id: "AB",
+    label: 'AB',
+  },
+  {
+    id: "AC",
+    label: 'AC',
+  },
+  {
+    id: "AD",
+    label: 'AD',
+  },
+  {
+    id: "BC",
+    label: 'BC',
+  },
+  {
+    id: "BD",
+    label: 'BD',
+  },
+];
+
 export default function ModalAddEditDriver(
   {
     openAddEditDriver,
@@ -159,13 +206,22 @@ export default function ModalAddEditDriver(
                 onChange={handleChanceInput}
               />
               <TextField
+                select
                 label="Categoria"
                 name='category'
                 value={formAdd.category}
+                SelectProps={{
+                  native: true,
+                }}
                 variant="standard"
-                autoComplete='on'
                 onChange={handleChanceInput}
-              />
+              >
+                {currencies.map((option) => (
+                  <option key={option.id} value={option.id}>
+                    {option.label}
+                  </option>
+                ))}
+              </TextField>
 
               <label
                 className={styles.label_date}
@@ -190,13 +246,22 @@ export default function ModalAddEditDriver(
             >
               <h1>{titleModal}</h1>
               <TextField
+                select
                 label="Categoria"
                 name='category'
                 value={formEdit.category}
+                SelectProps={{
+                  native: true,
+                }}
                 variant="standard"
-                autoComplete='on'
                 onChange={handleChanceInput}
-              />
+              >
+                {currencies.map((option) => (
+                  <option key={option.id} value={option.id}>
+                    {option.label}
+                  </option>
+                ))}
+              </TextField>
               <label
                 className={styles.label_date}
                 htmlFor="expiresIn">

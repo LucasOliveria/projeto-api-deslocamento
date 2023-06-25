@@ -2,6 +2,7 @@ import CustoncButton from "@/components/CustomButtonOpen";
 import Footer from "@/components/Footer";
 import Header from '@/components/Header';
 import ModalAddEditDriver from "@/components/ModalAddEditDriver";
+import ModalDeleteDriver from "@/components/ModalDeleteDriver";
 import InfoTable from "@/components/Table";
 import api from "@/services/api";
 import styles from '@/styles/Home.module.css';
@@ -15,7 +16,7 @@ export default function Drivers() {
     category: "",
     expiresIn: "",
   });
-
+  const [openModalDelete, setOpenModalDelete] = useState(false)
   const [saveId, setSaveId] = useState(0);
 
   async function getDrivers() {
@@ -65,7 +66,7 @@ export default function Drivers() {
             setOpenAddEditDriver={setOpenAddEditDriver}
             setTitleModal={setTitleModal}
             setFormEditDriver={setFormEdit}
-            // setOpenModalDelete={setOpenModalDelete}
+            setOpenModalDelete={setOpenModalDelete}
             setSaveId={setSaveId}
           />
         </div>
@@ -80,6 +81,13 @@ export default function Drivers() {
         getDrivers={getDrivers}
         formEdit={formEdit}
         setFormEdit={setFormEdit}
+        saveId={saveId}
+      />
+
+      <ModalDeleteDriver
+        openModalDelete={openModalDelete}
+        setOpenModalDelete={setOpenModalDelete}
+        getDrivers={getDrivers}
         saveId={saveId}
       />
     </div>

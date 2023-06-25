@@ -29,7 +29,6 @@ export default interface PropsTable {
     city: string,
     state: string
   }>>
-  setOpenModalDelete?: Dispatch<SetStateAction<boolean>>
 
 
 
@@ -81,5 +80,6 @@ export default interface PropsTable {
 
 
   setTitleModal?: Dispatch<SetStateAction<string>>
+  setOpenModalDelete: Dispatch<SetStateAction<boolean>>
   setSaveId: Dispatch<SetStateAction<number>>
 }
