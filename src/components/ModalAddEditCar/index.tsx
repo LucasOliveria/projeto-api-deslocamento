@@ -81,7 +81,7 @@ export default function ModalAddEditCar(
         id: saveId,
         marcaModelo: brandModel,
         anoFabricacao: year,
-        numkmAtualro: currentKm,
+        kmAtual: currentKm,
       });
 
       getCars();
@@ -225,13 +225,14 @@ export default function ModalAddEditCar(
                 InputLabelProps={{
                   shrink: true,
                 }}
-                inputProps={{ min: 0, step: 'any' }}
+                inputProps={{ min: 0 }}
                 variant="standard"
                 onChange={handleChanceInput}
               />
               <SendButton />
             </form>
           }
+
         </Box>
       </Modal>
     </div>
