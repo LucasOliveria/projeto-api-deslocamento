@@ -16,7 +16,7 @@
   color: #85ea2d;
 }
 
-@media (max-width:915px) {
+@media (max-width:840px) {
   .header {
     flex-direction: column;
     justify-content: center;
@@ -29,10 +29,14 @@
   }
 }
 
-@media (max-width:720px) {
+@media (max-width:600px) {
   .header {
     justify-content: space-between;
     flex-direction: row;
     padding: 0 20px;
+  }
+
+  .header h1 {
+    font-size: 27px;
   }
 }

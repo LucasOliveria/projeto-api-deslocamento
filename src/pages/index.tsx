@@ -8,7 +8,7 @@ export default function Home() {
       <Header valueNav={0} />
       <main className={styles.main}>
         <div className={styles.welcome}>
-          <h1>Bem-Vindo, Sr. Usuário!</h1>
+          <h1>Bem-Vindo <span>!</span></h1>
         </div>
       </main>
       <Footer />
