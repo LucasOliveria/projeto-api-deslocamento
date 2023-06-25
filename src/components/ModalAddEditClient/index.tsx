@@ -22,9 +22,16 @@ const style = {
 };
 
 export default function ModalAddEditClient(
-  { openAddEditClient, setOpenAddEditClient, titleModal, getClients }: PropsModalAddEditClient
+  {
+    openAddEditClient,
+    setOpenAddEditModal,
+    titleModal,
+    getClients,
+    formEdit,
+    setFormEdit,
+    saveId }: PropsModalAddEditClient
 ) {
-  const [form, setForm] = useState({
+  const [formAdd, setFormAdd] = useState({
     name: "",
     docNumber: "",
     docType: "",
@@ -35,14 +42,12 @@ export default function ModalAddEditClient(
     state: ""
   });
 
-  async function submitForm(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  async function addClient() {
 
-    const { name, docNumber, docType, adress, houseNumber, neighborhood, city, state } = form;
+    const { name, docNumber, docType, adress, houseNumber, neighborhood, city, state } = formAdd;
 
     if (!name || !docNumber || !docType || !adress || !houseNumber || !neighborhood || !city || !state) {
       return console.log("preencha todos os campos");
-
     }
 
     try {
@@ -59,16 +64,16 @@ export default function ModalAddEditClient(
 
       getClients();
 
-      setForm({
-        name: "",
-        docNumber: "",
-        docType: "",
-        adress: "",
-        houseNumber: "",
-        neighborhood: "",
-        city: "",
-        state: ""
-      });
+      // setFormAdd({
+      //   name: "",
+      //   docNumber: "",
+      //   docType: "",
+      //   adress: "",
+      //   houseNumber: "",
+      //   neighborhood: "",
+      //   city: "",
+      //   state: ""
+      // });
 
       return console.log("Cliente cadastrado com sucesso!");
     } catch (error) {
@@ -77,12 +82,66 @@ export default function ModalAddEditClient(
 
   }
 
+  async function editClient() {
+
+    const { name, adress, houseNumber, neighborhood, city, state } = formEdit;
+
+    if (!name || !adress || !houseNumber || !neighborhood || !city || !state) {
+      return console.log("preencha todos os campos");
+    }
+
+    try {
+      await api.put(`/Cliente/${saveId}`, {
+        id: saveId,
+        nome: name,
+        logradouro: adress,
+        numero: houseNumber,
+        bairro: neighborhood,
+        cidade: city,
+        uf: state
+      });
+
+      getClients();
+
+      setFormEdit({
+        name: "",
+        adress: "",
+        houseNumber: "",
+        neighborhood: "",
+        city: "",
+        state: ""
+      });
+
+      handleClose();
+
+      return console.log("Cliente atualizado com sucesso!");
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+
+  async function submitForm(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (titleModal === "Cadastrar Cliente") {
+      await addClient();
+      return;
+    }
+
+    await editClient();
+
+  }
+
   function handleChanceInput(event: ChangeEvent<HTMLInputElement>) {
-    setForm({ ...form, [event.target.name]: event.target.value });
+    titleModal === "Cadastrar Cliente" ?
+      setFormAdd({ ...formAdd, [event.target.name]: event.target.value })
+      :
+      setFormEdit({ ...formEdit, [event.target.name]: event.target.value })
   }
 
   function handleClose() {
-    setOpenAddEditClient(false);
+    setOpenAddEditModal(false);
   }
 
   return (
@@ -92,13 +151,12 @@ export default function ModalAddEditClient(
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-
         <Box sx={style}>
           <CloseIcon
             sx={{ position: "absolute", top: 5, right: 12, cursor: "pointer" }}
             onClick={handleClose}
           />
-          {openAddEditClient &&
+          {titleModal === "Cadastrar Cliente" &&
             <form
               className={styles.form}
               onSubmit={submitForm}
@@ -107,7 +165,7 @@ export default function ModalAddEditClient(
               <TextField
                 label="Nome"
                 name='name'
-                value={form.name}
+                value={formAdd.name}
                 variant="standard"
                 autoComplete='on'
                 onChange={handleChanceInput}
@@ -115,7 +173,7 @@ export default function ModalAddEditClient(
               <TextField
                 label="Nº Documento"
                 name='docNumber'
-                value={form.docNumber}
+                value={formAdd.docNumber}
                 variant="standard"
                 autoComplete='on'
                 onChange={handleChanceInput}
@@ -123,7 +181,7 @@ export default function ModalAddEditClient(
               <TextField
                 label="Tipo de Documento"
                 name='docType'
-                value={form.docType}
+                value={formAdd.docType}
                 variant="standard"
                 autoComplete='on'
                 onChange={handleChanceInput}
@@ -131,7 +189,7 @@ export default function ModalAddEditClient(
               <TextField
                 label="Endereço"
                 name='adress'
-                value={form.adress}
+                value={formAdd.adress}
                 variant="standard"
                 autoComplete='on'
                 onChange={handleChanceInput}
@@ -139,7 +197,7 @@ export default function ModalAddEditClient(
               <TextField
                 label="Número"
                 name='houseNumber'
-                value={form.houseNumber}
+                value={formAdd.houseNumber}
                 variant="standard"
                 autoComplete='on'
                 onChange={handleChanceInput}
@@ -147,7 +205,7 @@ export default function ModalAddEditClient(
               <TextField
                 label="Bairro"
                 name='neighborhood'
-                value={form.neighborhood}
+                value={formAdd.neighborhood}
                 variant="standard"
                 autoComplete='on'
                 onChange={handleChanceInput}
@@ -155,7 +213,7 @@ export default function ModalAddEditClient(
               <TextField
                 label="Cidade"
                 name='city'
-                value={form.city}
+                value={formAdd.city}
                 variant="standard"
                 autoComplete='on'
                 onChange={handleChanceInput}
@@ -163,7 +221,7 @@ export default function ModalAddEditClient(
               <TextField
                 label="UF"
                 name='state'
-                value={form.state}
+                value={formAdd.state}
                 variant="standard"
                 autoComplete='on'
                 onChange={handleChanceInput}
@@ -171,9 +229,64 @@ export default function ModalAddEditClient(
               <SendButton />
             </form>
           }
-
+          {titleModal === "Editar Cliente" &&
+            <form
+              className={styles.form}
+              onSubmit={submitForm}
+            >
+              <h1>{titleModal}</h1>
+              <TextField
+                label="Nome"
+                name='name'
+                value={formEdit.name}
+                variant="standard"
+                autoComplete='on'
+                onChange={handleChanceInput}
+              />
+              <TextField
+                label="Endereço"
+                name='adress'
+                value={formEdit.adress}
+                variant="standard"
+                autoComplete='on'
+                onChange={handleChanceInput}
+              />
+              <TextField
+                label="Número"
+                name='houseNumber'
+                value={formEdit.houseNumber}
+                variant="standard"
+                autoComplete='on'
+                onChange={handleChanceInput}
+              />
+              <TextField
+                label="Bairro"
+                name='neighborhood'
+                value={formEdit.neighborhood}
+                variant="standard"
+                autoComplete='on'
+                onChange={handleChanceInput}
+              />
+              <TextField
+                label="Cidade"
+                name='city'
+                value={formEdit.city}
+                variant="standard"
+                autoComplete='on'
+                onChange={handleChanceInput}
+              />
+              <TextField
+                label="UF"
+                name='state'
+                value={formEdit.state}
+                variant="standard"
+                autoComplete='on'
+                onChange={handleChanceInput}
+              />
+              <SendButton />
+            </form>
+          }
         </Box>
-
       </Modal>
     </div>
   );

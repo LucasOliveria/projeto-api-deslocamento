@@ -73,6 +73,8 @@ body {
   font-size: 1.2rem;
   font-weight: 700;
   border-radius: 15px;
+  color: #ffffff;
+  border: none;
   background-color: #73c927;
 }
 
@@ -128,20 +130,6 @@ body {
   text-decoration: underline;
 }
 
-@media (max-width:870px) {
-  .MuiSvgIcon-root {
-    font-size: 3rem;
-  }
-
-  .MuiBottomNavigationAction-label {
-    font-size: 0.9rem;
-  }
-
-  .MuiBottomNavigationAction-label.Mui-selected {
-    font-size: 0.9rem;
-  }
-}
-
 /*  */
 
 .MuiTextField-root {
@@ -157,4 +145,18 @@ body {
   font-size: 1.4rem;
   color: #3f3d56;
   font-weight: 700;
+}
+
+@media (max-width:870px) {
+  .MuiSvgIcon-root {
+    font-size: 3rem;
+  }
+
+  .MuiBottomNavigationAction-label {
+    font-size: 0.9rem;
+  }
+
+  .MuiBottomNavigationAction-label.Mui-selected {
+    font-size: 0.9rem;
+  }
 }

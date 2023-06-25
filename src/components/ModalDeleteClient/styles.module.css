@@ -1,0 +1,13 @@
+.h2 {
+  font-size: 3rem;
+  color: #3f3d56;
+  margin-bottom: 30px;
+}
+
+.red_button {
+  background-color: #dd0f0f;
+}
+
+.red_button:hover {
+  background-color: #cc0f0f;
+}

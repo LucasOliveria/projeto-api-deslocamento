@@ -1,7 +1,8 @@
-import CustoncButtonOpen from "@/components/CustomButtonOpen";
+import CustomButtonOpen from "@/components/CustomButtonOpen";
 import Footer from "@/components/Footer";
 import Header from '@/components/Header';
 import ModalAddEditClient from "@/components/ModalAddEditClient";
+import ModalDeleteClient from "@/components/ModalDeleteClient";
 import InfoTable from "@/components/Table";
 import api from "@/services/api";
 import styles from '@/styles/Home.module.css';
@@ -12,6 +13,17 @@ export default function Clients() {
   const [clients, setClients] = useState([]);
   const [openAddEditClient, setOpenAddEditClient] = useState(false);
   const [titleModal, setTitleModal] = useState("");
+  const [saveId, setSaveId] = useState(0);
+  const [formEdit, setFormEdit] = useState({
+    name: "",
+    adress: "",
+    houseNumber: "",
+    neighborhood: "",
+    city: "",
+    state: ""
+  });
+
+  const [openModalDelete, setOpenModalDelete] = useState(false)
 
   async function getClients() {
     try {
@@ -31,6 +43,7 @@ export default function Clients() {
   return (
     <div className={styles.body}>
       <Header valueNav={1} />
+
       <main className={styles.main}>
         <div className={styles.containerTable}>
           <div className={styles.container_title}>
@@ -38,7 +51,7 @@ export default function Clients() {
           </div>
 
           <div className={styles.container_add_button}>
-            <CustoncButtonOpen
+            <CustomButtonOpen
               setTitleModal={setTitleModal}
               setOpenAddEditModal={setOpenAddEditClient}
             />
@@ -57,6 +70,11 @@ export default function Clients() {
               ]
             }
             clients={clients}
+            setOpenAddEditModal={setOpenAddEditClient}
+            setTitleModal={setTitleModal}
+            setFormEdit={setFormEdit}
+            setOpenModalDelete={setOpenModalDelete}
+            setSaveId={setSaveId}
           />
         </div>
       </main>
@@ -65,10 +83,18 @@ export default function Clients() {
 
       <ModalAddEditClient
         openAddEditClient={openAddEditClient}
-        setOpenAddEditClient={setOpenAddEditClient}
+        setOpenAddEditModal={setOpenAddEditClient}
         titleModal={titleModal}
         getClients={getClients}
-      // clients={clients}
+        formEdit={formEdit}
+        setFormEdit={setFormEdit}
+        saveId={saveId}
+      />
+
+      <ModalDeleteClient
+        openModalDelete={openModalDelete}
+        setOpenModalDelete={setOpenModalDelete}
+        saveId={saveId}
       />
     </div>
   )

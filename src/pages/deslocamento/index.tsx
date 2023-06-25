@@ -1,4 +1,4 @@
-import CustoncButton from "@/components/CustomButtonOpen";
+import CustomButtonOpen from "@/components/CustomButtonOpen";
 import Footer from "@/components/Footer";
 import Header from '@/components/Header';
 import ModalDetails from "@/components/ModalDetails";
@@ -13,9 +13,10 @@ export default function Deslocamento() {
     clientName: "",
     driverName: "",
     plate: ""
-  })
-
+  });
   const [open, setOpen] = useState(false);
+  const [saveId, setSaveId] = useState(0);
+
 
   async function getDisplacements() {
     try {
@@ -36,14 +37,17 @@ export default function Deslocamento() {
     <div className={styles.body}>
 
       <Header valueNav={3} />
+
       <main className={styles.main}>
         <div className={styles.containerTable}>
           <div className={styles.container_title}>
             <h1 className={styles.title_table}>Deslocamento</h1>
           </div>
+
           <div className={styles.container_add_button}>
-            <CustoncButton title="ADICIONAR" />
+            <CustomButtonOpen />
           </div>
+
           <InfoTable
             setOpen={setOpen}
             header={
@@ -62,10 +66,13 @@ export default function Deslocamento() {
             }
             displacements={displacements}
             setDetails={setDetails}
+            setSaveId={setSaveId}
           />
         </div>
       </main>
+
       <Footer />
+
       <ModalDetails
         details={details}
         open={open}

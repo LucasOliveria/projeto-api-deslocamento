@@ -14,43 +14,66 @@ import format from 'date-fns/format';
 import InfoIcon from '@mui/icons-material/Info';
 import api from '@/services/api';
 
-
 export default function InfoTable(
-  { header, clients, drivers, displacements, setDetails, setOpen, cars }: PropsTable
+  { header,
+    clients,
+    drivers,
+    displacements,
+    setDetails,
+    setOpen,
+    cars,
+    setOpenAddEditModal,
+    setTitleModal,
+    setFormEdit,
+    setOpenModalDelete,
+    setSaveId
+  }: PropsTable
 ) {
-  // const [page, setPage] = useState(0);
-  // const [rowsPerPage, setRowsPerPage] = useState(10);
-
-  // const handleChangePage = (event: unknown, newPage: number) => {
-  //   setPage(newPage);
-  // };
-
-  // const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement>) => {
-  //   setRowsPerPage(+event.target.value);
-  //   setPage(0);
-  // };
-
   async function handleDetailsDisplacement(idDriver: number, idCar: number, idClient: number) {
     try {
-      const driver = await api.get(`/Condutor/${idDriver}`)
-      const car = await api.get(`/Veiculo/${idCar}`)
-      const client = await api.get(`/Cliente/${idClient}`)
+      const driver = await api.get(`/Condutor/${idDriver}`);
+      const car = await api.get(`/Veiculo/${idCar}`);
+      const client = await api.get(`/Cliente/${idClient}`);
 
-      if (setOpen) {
-        setOpen(true)
-      }
+      setOpen && setOpen(true)
 
-      if (setDetails) {
-        setDetails({
-          clientName: client.data.nome,
-          driverName: driver.data.nome,
-          plate: car.data.placa
-        })
-      }
+      setDetails && setDetails({
+        clientName: client.data.nome,
+        driverName: driver.data.nome,
+        plate: car.data.placa
+      })
+
 
     } catch (error) {
       console.log(error)
     }
+  }
+
+  async function handleOpenEditModal(id: number) {
+    setOpenAddEditModal && setOpenAddEditModal(true);
+    setTitleModal && setTitleModal("Editar Cliente");
+
+    setSaveId(id);
+    try {
+      const client = await api.get(`/Cliente/${id}`);
+
+      setFormEdit && setFormEdit({
+        name: client.data.nome,
+        adress: client.data.logradouro,
+        houseNumber: client.data.numero,
+        neighborhood: client.data.bairro,
+        city: client.data.cidade,
+        state: client.data.uf
+      })
+    } catch (error) {
+
+    }
+  }
+
+  function handleOpenDeleteModal(id: number) {
+    setOpenModalDelete && setOpenModalDelete(true);
+
+    setSaveId(id);
   }
 
   return (
@@ -90,16 +113,15 @@ export default function InfoTable(
                     {client.cidade}/{client.uf}
                   </TableCell>
                   <TableCell>
-                    <EditIcon />
+                    <EditIcon onClick={() => handleOpenEditModal(client.id)} />
                   </TableCell>
                   <TableCell>
-                    <DeleteForeverIcon />
+                    <DeleteForeverIcon onClick={() => handleOpenDeleteModal(client.id)} />
                   </TableCell>
                 </TableRow>
               ))}
             </TableBody>
           }
-
           {drivers &&
             <TableBody >
               {drivers?.map((driver) => {
@@ -130,7 +152,6 @@ export default function InfoTable(
               })}
             </TableBody>
           }
-
           {displacements &&
             <TableBody >
               {displacements?.map((info) => {
@@ -202,15 +223,6 @@ export default function InfoTable(
           }
         </Table>
       </TableContainer>
-      {/* <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={rows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      /> */}
     </Paper>
   );
 }
