@@ -1,4 +1,4 @@
-import CustoncButton from "@/components/CustomButtonOpen";
+import CustomButtonOpen from "@/components/CustomButtonOpen";
 import Footer from "@/components/Footer";
 import Header from '@/components/Header';
 import ModalAddEditCar from "@/components/ModalAddEditCar";
@@ -51,7 +51,7 @@ export default function Cars() {
           </div>
 
           <div className={styles.container_add_button}>
-            <CustoncButton
+            <CustomButtonOpen
               setTitleModal={setTitleModal}
               setOpenAddEditCars={setOpenAddEditCars}
             />

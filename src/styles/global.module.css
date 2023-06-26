@@ -1,6 +1,7 @@
 .form {
   height: 100%;
   color: currentColor;
+  gap: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,6 +17,11 @@
   width: 100%;
 }
 
+.container_time {
+  width: 25%;
+  align-self: flex-start;
+}
+
 .label_date {
   margin-top: 20px;
   align-self: flex-start;
@@ -25,10 +31,21 @@
 }
 
 .input_date {
-  width: 100%;
   height: 50px;
   font-size: 1.6rem;
   color: #1b1b1b;
+}
+
+.input_time {
+  height: 30px;
+}
+
+.input_time,
+.input_date {
+  width: 100%;
+  border: none;
+  background-color: #dedede;
+  border-bottom: 1px solid #1d1d1d88;
 }
 
 .h2_modal_delete {

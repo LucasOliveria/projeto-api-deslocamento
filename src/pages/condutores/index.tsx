@@ -1,4 +1,4 @@
-import CustoncButton from "@/components/CustomButtonOpen";
+import CustomButtonOpen from "@/components/CustomButtonOpen";
 import Footer from "@/components/Footer";
 import Header from '@/components/Header';
 import ModalAddEditDriver from "@/components/ModalAddEditDriver";
@@ -50,7 +50,7 @@ export default function Drivers() {
           </div>
 
           <div className={styles.container_add_button}>
-            <CustoncButton
+            <CustomButtonOpen
               setTitleModal={setTitleModal}
               setOpenAddEditDriver={setOpenAddEditDriver}
             />

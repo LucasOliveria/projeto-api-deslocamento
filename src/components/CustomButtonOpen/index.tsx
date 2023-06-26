@@ -1,13 +1,14 @@
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import PropsAddButtons from '@/types/PropsAddButtons';
+import PropsCustomButtonOpen from '@/types/PropsCustomButtonOpen';
 
 export default function CustomButtonOpen({
   setOpenAddEditClient,
   setOpenAddEditDriver,
   setOpenAddEditCars,
+  setOpenAddEditDisplacement,
   setTitleModal
-}: PropsAddButtons) {
+}: PropsCustomButtonOpen) {
 
   function handleOpenModal() {
     if (setOpenAddEditClient) {
@@ -25,6 +26,12 @@ export default function CustomButtonOpen({
     if (setOpenAddEditCars) {
       setOpenAddEditCars(true);
       setTitleModal("Cadastrar Veículo");
+      return;
+    }
+
+    if (setOpenAddEditDisplacement) {
+      setOpenAddEditDisplacement(true);
+      setTitleModal("Iniciar Deslocamento");
       return;
     }
   }

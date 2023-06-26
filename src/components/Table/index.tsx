@@ -1,18 +1,17 @@
+import api from '@/services/api';
+import PropsTable from '@/types/PropsTable';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import EditIcon from '@mui/icons-material/Edit';
+import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined';
+import WhereToVoteOutlinedIcon from '@mui/icons-material/WhereToVoteOutlined';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import { useState, ChangeEvent, Dispatch, SetStateAction } from 'react';
-import EditIcon from '@mui/icons-material/Edit';
-import PropsTable from '@/types/PropsTable';
 import format from 'date-fns/format';
-import InfoIcon from '@mui/icons-material/Info';
-import api from '@/services/api';
 
 export default function InfoTable(
   { header,
@@ -206,8 +205,8 @@ export default function InfoTable(
           {displacements &&
             <TableBody >
               {displacements?.map((info) => {
-                const formatDateStart = info.inicioDeslocamento && format(new Date(info.inicioDeslocamento), "dd-MM-yyyy  H:mm");
-                const formatDateEnd = info.fimDeslocamento && format(new Date(info.fimDeslocamento), "dd-MM-yyyy  H:mm");
+                const formatDateStart = info.inicioDeslocamento && format(new Date(info.inicioDeslocamento), "dd-MM-yyyy  HH:mm");
+                const formatDateEnd = info.fimDeslocamento && format(new Date(info.fimDeslocamento), "dd-MM-yyyy  HH:mm");
 
                 return (
                   <TableRow hover key={info.id} role="checkbox" tabIndex={-1}>
@@ -232,11 +231,16 @@ export default function InfoTable(
                     <TableCell>
                       {info.observacao}
                     </TableCell>
-                    <TableCell onClick={() => handleDetailsDisplacement(info.idCondutor, info.idVeiculo, info.idCliente)}>
-                      <InfoIcon sx={{ cursor: "pointer" }} />
-                    </TableCell>
                     <TableCell>
-                      <EditIcon />
+                      {!formatDateEnd ?
+                        <RoomOutlinedIcon
+                          sx={{ cursor: "pointer" }}
+                        /> :
+                        <WhereToVoteOutlinedIcon
+                          onClick={() => handleDetailsDisplacement(info.idCondutor, info.idVeiculo, info.idCliente)}
+                          sx={{ cursor: "pointer" }}
+                        />
+                      }
                     </TableCell>
                     <TableCell>
                       <DeleteForeverIcon />

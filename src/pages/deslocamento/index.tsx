@@ -1,21 +1,40 @@
 import CustomButtonOpen from "@/components/CustomButtonOpen";
 import Footer from "@/components/Footer";
 import Header from '@/components/Header';
+import ModalAddEditDisplacement from "@/components/ModalAddEditDisplacement";
 import ModalDetails from "@/components/ModalDetails";
 import InfoTable from "@/components/Table";
 import api from "@/services/api";
 import styles from '@/styles/Home.module.css';
 import { useEffect, useState } from "react";
 
-export default function Deslocamento() {
+export default function Displacements() {
   const [displacements, setDisplacements] = useState([]);
+
+  const [openAddEditDisplacement, setOpenAddEditDisplacement] = useState(false);
+
+  const [titleModal, setTitleModal] = useState("");
+
+  const [formEdit, setFormEdit] = useState({
+    finalKm: "",
+    endTripDate: "",
+    endTripHours: "",
+    observation: ""
+  });
+
+  const [openModalDelete, setOpenModalDelete] = useState(false);
+
+  const [saveId, setSaveId] = useState(0);
+
+
+
+  const [open, setOpen] = useState(false);
   const [details, setDetails] = useState({
     clientName: "",
     driverName: "",
     plate: ""
   });
-  const [open, setOpen] = useState(false);
-  const [saveId, setSaveId] = useState(0);
+
 
 
   async function getDisplacements() {
@@ -45,7 +64,10 @@ export default function Deslocamento() {
           </div>
 
           <div className={styles.container_add_button}>
-            <CustomButtonOpen />
+            <CustomButtonOpen
+              setTitleModal={setTitleModal}
+              setOpenAddEditDisplacement={setOpenAddEditDisplacement}
+            />
           </div>
 
           <InfoTable
@@ -59,19 +81,30 @@ export default function Deslocamento() {
                 { id: 5, label: "Motivo" },
                 { id: 6, label: "CheckList" },
                 { id: 7, label: "Observacao" },
-                { id: 8, label: "Detalhes" },
+                { id: 8, label: "Finalizar/Detalhes" },
                 { id: 9, label: "" },
-                { id: 10, label: "" },
               ]
             }
             displacements={displacements}
             setDetails={setDetails}
+            setTitleModal={setTitleModal}
+            setOpenModalDelete={setOpenModalDelete}
             setSaveId={setSaveId}
           />
         </div>
       </main>
 
       <Footer />
+
+      <ModalAddEditDisplacement
+        openAddEditDisplacement={openAddEditDisplacement}
+        setOpenAddEditDisplacement={setOpenAddEditDisplacement}
+        titleModal={titleModal}
+        getDisplacements={getDisplacements}
+        formEdit={formEdit}
+        setFormEdit={setFormEdit}
+        saveId={saveId}
+      />
 
       <ModalDetails
         details={details}

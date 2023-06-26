@@ -81,11 +81,12 @@ body {
 
 .MuiPaper-root {
   border-radius: 15px;
-  background-color: #e6e6e6;
+  background-color: #3f3d56;
 }
 
 .MuiTableCell-body {
   font-size: 1.3rem;
+  background-color: #dddddd;
   text-align: center;
 }
 
@@ -94,27 +95,18 @@ body {
   cursor: pointer;
 }
 
-.MuiTableCell-head,
-.MuiTablePagination-root,
-.MuiTablePagination-selectLabel,
-.MuiTablePagination-displayedRows {
+.MuiTableCell-body:last-of-type:hover,
+.MuiTableCell-body:nth-last-child(2):hover {
+  background-color: #e6e6e6;
+}
+
+.MuiTableCell-head {
   font-size: 1.3rem;
   font-weight: 700;
   color: #ffffff;
   background-color: #3f3d56;
   z-index: 0;
 }
-
-
-/* .MuiTableCell-body:last-of-type,
-.MuiTableCell-body:nth-last-child(2) {
-  transition: all 0.3s;
-}
-
-.MuiTableCell-body:last-of-type:hover,
-.MuiTableCell-body:nth-last-child(2):hover {
-  background-color: #73c927;
-} */
 
 /*  */
 .MuiBox-root {
