@@ -81,12 +81,11 @@ body {
 
 .MuiPaper-root {
   border-radius: 15px;
-  background-color: #3f3d56;
+  background-color: #dddddd;
 }
 
 .MuiTableCell-body {
   font-size: 1.3rem;
-  background-color: #dddddd;
   text-align: center;
 }
 

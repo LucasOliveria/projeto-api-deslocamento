@@ -80,7 +80,7 @@ export default function Displacements() {
                 { id: 4, label: "Final da Corrida" },
                 { id: 5, label: "Motivo" },
                 { id: 6, label: "CheckList" },
-                { id: 7, label: "Observacao" },
+                { id: 7, label: "OBS" },
                 { id: 8, label: "Finalizar/Detalhes" },
                 { id: 9, label: "" },
               ]
