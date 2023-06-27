@@ -1,100 +1,110 @@
  .body {
-   display: flex;
-   flex-direction: column;
-   background-color: #1b1b1b;
-   justify-content: space-between;
-   max-width: 100vw;
-   min-height: 100vh;
-   position: relative;
+ 	display: flex;
+ 	flex-direction: column;
+ 	background-color: #1b1b1b;
+ 	justify-content: space-between;
+ 	max-width: 100vw;
+ 	min-height: 100vh;
+ 	position: relative;
  }
 
  .main {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   flex-direction: column;
-   max-width: 100vw;
-   height: calc(100vh - 90px);
-   margin-top: 12rem;
-   background-color: #fafafa;
-   border-top-left-radius: 45px;
-   border-top-right-radius: 45px;
+ 	display: flex;
+ 	align-items: center;
+ 	justify-content: center;
+ 	flex-direction: column;
+ 	max-width: 100vw;
+ 	height: calc(100vh - 90px);
+ 	margin-top: 12rem;
+ 	background-color: #fafafa;
+ 	border-top-left-radius: 45px;
+ 	border-top-right-radius: 45px;
  }
 
  .containerTable {
-   display: flex;
-   flex-direction: column;
-   justify-content: flex-start;
-   align-items: flex-start;
-   flex-direction: column;
-   width: 950px;
-   height: 100%;
-   padding: 20px 0;
+ 	display: flex;
+ 	flex-direction: column;
+ 	justify-content: flex-start;
+ 	align-items: flex-start;
+ 	flex-direction: column;
+ 	max-width: 950px;
+ 	height: 100%;
+ 	padding: 20px 0;
  }
 
  .container_title {
-   align-self: flex-start;
-   margin-bottom: 25px;
-   background-image: url("../assets/logo2.svg");
-   background-repeat: no-repeat;
-   background-size: contain;
-   background-position: left;
+ 	align-self: flex-start;
+ 	margin-bottom: 25px;
+ 	background-image: url("../assets/logo2.svg");
+ 	background-repeat: no-repeat;
+ 	background-size: contain;
+ 	background-position: left;
  }
 
  .title_table,
  .welcome h1 {
-   font-size: 4rem;
-   color: #1b1b1b;
+ 	font-size: 4rem;
+ 	color: #1b1b1b;
  }
 
  .container_add_button {
-   align-self: flex-start;
+ 	align-self: flex-start;
  }
 
  .welcome {
-   display: flex;
-   flex-direction: column;
-   padding: 35px 0 0 35px;
-   width: 100%;
-   height: 100%;
-   background-image: url("../assets/current_location.svg");
-   background-repeat: no-repeat;
-   background-size: 40%;
-   background-position: center;
+ 	display: flex;
+ 	flex-direction: column;
+ 	padding: 35px 0 0 35px;
+ 	width: 100%;
+ 	height: 100%;
+ 	background-image: url("../assets/current_location.svg");
+ 	background-repeat: no-repeat;
+ 	background-size: 40%;
+ 	background-position: center;
  }
 
  .welcome span {
-   color: #A1E262;
+ 	color: #A1E262;
  }
 
  @media (max-width:840px) {
-   .main {
-     height: calc(100vh - 120px);
-     margin-top: 12rem;
-     position: relative;
-   }
+ 	.main {
+ 		height: calc(100vh - 120px);
+ 		margin-top: 12rem;
+ 	}
 
-   .welcome {
-     padding: 35px 10px;
-     background-size: 300px;
-   }
+ 	.welcome {
+ 		padding: 35px 10px;
+ 		background-size: 300px;
+ 	}
 
-   .title_table,
-   .welcome h1 {
-     font-size: 3rem;
-     color: #1b1b1b;
-   }
+ 	.title_table,
+ 	.welcome h1 {
+ 		font-size: 2.8rem;
+ 	}
 
  }
 
- @media (min-width:600px) and (max-width: 915px) {
-   .welcome {
-     background-size: 30%;
-   }
+ @media (max-width:915px) {
+ 	.containerTable {
+ 		width: 100%;
+ 		height: 100%;
+ 		padding: 15px 18px;
+ 	}
 
-   .title_table,
-   .welcome h1 {
-     font-size: 3rem;
-     color: #1b1b1b;
-   }
+ 	.container_title {
+ 		align-self: flex-start;
+ 		margin-bottom: 10px;
+ 	}
+
+ 	.title_table,
+ 	.welcome h1 {
+ 		font-size: 2.8rem;
+ 	}
+ }
+
+ @media (min-width:600px) and (max-width: 915px) {
+ 	.welcome {
+ 		background-size: 30%;
+ 	}
  }

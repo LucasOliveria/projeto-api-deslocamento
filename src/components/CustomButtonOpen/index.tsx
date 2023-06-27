@@ -37,7 +37,7 @@ export default function CustomButtonOpen({
   }
 
   return (
-    <Stack spacing={2} direction="row">
+    <Stack direction="row">
       <Button variant="contained" onClick={handleOpenModal}>
         ADICIONAR
       </Button>

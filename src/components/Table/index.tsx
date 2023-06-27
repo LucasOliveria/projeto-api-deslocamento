@@ -155,7 +155,7 @@ export default function InfoTable(
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden', maxHeight: "70%" }}>
-      <TableContainer sx={{ maxHeight: "100%" }}>
+      <TableContainer sx={{ height: "100%" }}>
         <Table stickyHeader aria-label="sticky table" >
           <TableHead >
             <TableRow >
