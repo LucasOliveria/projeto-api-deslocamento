@@ -39,7 +39,7 @@ export default function ModalDeleteDisplacement(
 
   async function handleDeleteDriver() {
     try {
-      await api.delete(`/Condutor/${saveId}`, {
+      await api.delete(`/Deslocamento/${saveId}`, {
         data: {
           id: saveId
         }
@@ -51,7 +51,7 @@ export default function ModalDeleteDisplacement(
 
       console.log("Deslocamento Excluído");
     } catch (error: any) {
-      console.log("Condutor não excluído. Erro ao atualizar as entradas");
+      console.log("Deslocamento não excluído. Erro ao atualizar as entradas");
     }
   }
 
@@ -72,7 +72,7 @@ export default function ModalDeleteDisplacement(
             onClick={handleClose}
           />
           <h2 className={styles.h2_modal_delete}>
-            Deseja excluir o condutor?
+            Deseja excluir o registro de deslocamento?
           </h2>
 
           <Stack spacing={2} direction="row">
