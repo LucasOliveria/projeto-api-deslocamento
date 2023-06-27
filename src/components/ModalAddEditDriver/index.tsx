@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { format } from 'date-fns';
 import { ChangeEvent, FormEvent, useState } from 'react';
+import { toast } from 'react-toastify';
 import styles from "../../styles/Globals.module.css";
 import SendButton from '../SendButton';
 
@@ -88,7 +89,7 @@ export default function ModalAddEditDriver(
     const { name, licenceNumber, category, expiresIn } = formAdd;
 
     if (!name || !licenceNumber || !category || !expiresIn) {
-      return console.log("preencha todos os campos");
+      return toast.info("Preencha todos os campos!");
     }
 
     try {
@@ -108,9 +109,9 @@ export default function ModalAddEditDriver(
         expiresIn: format(new Date(), "yyyy-MM-dd")
       });
 
-      return console.log("Condutor cadastrado com sucesso!");
+      return toast.success("Condutor cadastrado com sucesso!");
     } catch (error: any) {
-      console.log(error.response.data);
+      return toast.error(error.response.data);
     }
   }
 
@@ -118,7 +119,7 @@ export default function ModalAddEditDriver(
     const { category, expiresIn } = formEdit;
 
     if (!category || !expiresIn) {
-      return console.log("preencha todos os campos");
+      return toast.info("Preencha todos os campos!");
     }
 
     try {
@@ -137,9 +138,9 @@ export default function ModalAddEditDriver(
 
       handleClose();
 
-      return console.log("Condutor atualizado com sucesso!");
+      return toast.success("Condutor atualizado com sucesso!");
     } catch (error: any) {
-      console.log(error.response.data);
+      return toast.error(error.response.data);
     }
 
   }

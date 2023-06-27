@@ -7,6 +7,7 @@ import InfoTable from "@/components/Table";
 import api from "@/services/api";
 import styles from '@/styles/Home.module.css';
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 export default function Drivers() {
   const [drivers, setDrivers] = useState([]);
@@ -29,9 +30,8 @@ export default function Drivers() {
       const response = await api.get("/Condutor");
 
       setDrivers(response.data);
-
     } catch (error: any) {
-      console.log(error.response.data);
+      toast.error("500 - Erro do servido. Recarregue a página!");
     }
   }
 
@@ -42,20 +42,17 @@ export default function Drivers() {
   return (
     <div className={styles.body}>
       <Header valueNav={2} />
-
       <main className={styles.main}>
         <div className={styles.containerTable}>
           <div className={styles.container_title}>
             <h1 className={styles.title_table}>Condutores</h1>
           </div>
-
           <div className={styles.container_add_button}>
             <CustomButtonOpen
               setTitleModal={setTitleModal}
               setOpenAddEditDriver={setOpenAddEditDriver}
             />
           </div>
-
           <InfoTable
             header={
               [
@@ -76,9 +73,7 @@ export default function Drivers() {
           />
         </div>
       </main>
-
       <Footer />
-
       <ModalAddEditDriver
         openAddEditDriver={openAddEditDriver}
         setOpenAddEditDriver={setOpenAddEditDriver}
@@ -88,7 +83,6 @@ export default function Drivers() {
         setFormEdit={setFormEdit}
         saveId={saveId}
       />
-
       <ModalDeleteDriver
         openModalDelete={openModalDelete}
         setOpenModalDelete={setOpenModalDelete}

@@ -5,6 +5,7 @@ import { TextField } from '@mui/material';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { ChangeEvent, FormEvent, useState } from 'react';
+import { toast } from 'react-toastify';
 import styles from "../../styles/Globals.module.css";
 import SendButton from '../SendButton';
 
@@ -43,7 +44,7 @@ export default function ModalAddEditClient(
     const { name, docNumber, docType, adress, houseNumber, neighborhood, city, state } = formAdd;
 
     if (!name || !docNumber || !docType || !adress || !houseNumber || !neighborhood || !city || !state) {
-      return console.log("preencha todos os campos");
+      return toast.info("Preencha todos os campos!");
     }
 
     try {
@@ -71,9 +72,9 @@ export default function ModalAddEditClient(
         state: ""
       });
 
-      return console.log("Cliente cadastrado com sucesso!");
+      return toast.success("Cliente cadastrado com sucesso!");
     } catch (error: any) {
-      console.log(error.response.data);
+      return toast.error(error.response.data);
     }
   }
 
@@ -81,7 +82,7 @@ export default function ModalAddEditClient(
     const { name, adress, houseNumber, neighborhood, city, state } = formEdit;
 
     if (!name || !adress || !houseNumber || !neighborhood || !city || !state) {
-      return console.log("preencha todos os campos");
+      return toast.info("Preencha todos os campos!");
     }
 
     try {
@@ -108,9 +109,9 @@ export default function ModalAddEditClient(
 
       handleClose();
 
-      return console.log("Cliente atualizado com sucesso!");
+      return toast.success("Cliente atualizado com sucesso!");
     } catch (error: any) {
-      console.log(error.response.data);
+      return toast.error(error.response.data);
     }
   }
 

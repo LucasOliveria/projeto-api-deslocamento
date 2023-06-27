@@ -5,6 +5,7 @@ import { TextField } from '@mui/material';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { ChangeEvent, FormEvent, useState } from 'react';
+import { toast } from 'react-toastify';
 import styles from "../../styles/Globals.module.css";
 import SendButton from '../SendButton';
 
@@ -39,7 +40,7 @@ export default function ModalAddEditCar(
     const { plate, brandModel, year, currentKm } = formAdd;
 
     if (!plate || !brandModel || !year || !currentKm) {
-      return console.log("preencha todos os campos");
+      return toast.info("Preencha todos os campos!");
     }
 
     try {
@@ -59,9 +60,9 @@ export default function ModalAddEditCar(
         currentKm: 0
       });
 
-      return console.log("Veículo cadastrado com sucesso!");
+      return toast.success("Veículo cadastrado com sucesso!");
     } catch (error: any) {
-      console.log(error);
+      return toast.error(error.response.data);
     }
   }
 
@@ -69,7 +70,7 @@ export default function ModalAddEditCar(
     const { brandModel, year, currentKm } = formEdit;
 
     if (!brandModel || !year || !currentKm) {
-      return console.log("preencha todos os campos");
+      return toast.info("Preencha todos os campos!");
     }
 
     try {
@@ -90,9 +91,9 @@ export default function ModalAddEditCar(
 
       handleClose();
 
-      return console.log("Veículo atualizado com sucesso!");
+      return toast.success("Veículo atualizado com sucesso!");
     } catch (error: any) {
-      console.log(error.response.data);
+      return toast.error(error.response.data);
     }
   }
 

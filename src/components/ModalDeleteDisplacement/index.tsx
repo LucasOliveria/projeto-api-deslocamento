@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import Stack from '@mui/material/Stack';
 import { Dispatch, SetStateAction } from 'react';
+import { toast } from 'react-toastify';
 import styles from "../../styles/Globals.module.css";
 
 const style = {
@@ -49,9 +50,9 @@ export default function ModalDeleteDisplacement(
 
       getDisplacements();
 
-      console.log("Deslocamento Excluído");
+      return toast.success("Deslocamento Excluído");
     } catch (error: any) {
-      console.log("Deslocamento não excluído. Erro ao atualizar as entradas");
+      return toast.error("500 - Deslocamento não excluído. Erro ao atualizar as entradas");
     }
   }
 

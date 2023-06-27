@@ -33,7 +33,6 @@
     position: absolute;
     top: 0;
     right: 0;
-    overflow-y: hidden;
   }
 
   .nav_bar.modal_fullscreen .bottons_nav {

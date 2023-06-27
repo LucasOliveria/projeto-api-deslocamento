@@ -7,6 +7,7 @@ import InfoTable from "@/components/Table";
 import api from "@/services/api";
 import styles from '@/styles/Home.module.css';
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 
 export default function Cars() {
@@ -32,7 +33,7 @@ export default function Cars() {
 
       setCars(response.data);
     } catch (error) {
-      console.log(error);
+      toast.error("500 - Erro do servido. Recarregue a página!");
     }
   }
 
@@ -43,20 +44,17 @@ export default function Cars() {
   return (
     <div className={styles.body}>
       <Header valueNav={4} />
-
       <main className={styles.main}>
         <div className={styles.containerTable}>
           <div className={styles.container_title}>
             <h1 className={styles.title_table}>Veículos</h1>
           </div>
-
           <div className={styles.container_add_button}>
             <CustomButtonOpen
               setTitleModal={setTitleModal}
               setOpenAddEditCars={setOpenAddEditCars}
             />
           </div>
-
           <InfoTable
             header={
               [
@@ -75,12 +73,9 @@ export default function Cars() {
             setOpenModalDelete={setOpenModalDelete}
             setSaveId={setSaveId}
           />
-
         </div>
       </main>
-
       <Footer />
-
       <ModalAddEditCar
         openAddEditCars={openAddEditCars}
         setOpenAddEditCars={setOpenAddEditCars}
@@ -90,7 +85,6 @@ export default function Cars() {
         setFormEdit={setFormEdit}
         saveId={saveId}
       />
-
       <ModalDeleteCar
         openModalDelete={openModalDelete}
         setOpenModalDelete={setOpenModalDelete}

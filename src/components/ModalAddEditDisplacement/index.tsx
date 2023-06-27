@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { format } from 'date-fns';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import styles from "../../styles/Globals.module.css";
 import SendButton from '../SendButton';
 
@@ -59,7 +60,7 @@ export default function ModalAddEditDisplacement(
       setCars([{ id: "", marcaModelo: "", placa: "" }, ...cars.data]);
 
     } catch (error: any) {
-      console.log("500 - Erro interno ao carregar listas");
+      toast.error("500 - Erro interno ao carregar listas");
     }
   }
 
@@ -67,11 +68,13 @@ export default function ModalAddEditDisplacement(
     const { initialKm, startTripDate, startTripHours, reason, checkList, observation, idClient, idDriver, idCar } = formAdd;
 
     if (!initialKm || !startTripDate || !startTripHours || !reason || !checkList || !observation || !idClient || !idDriver || !idCar) {
-      return console.log("preencha todos os campos!");
+      return toast.info("Preencha todos os campos!");
     }
 
     const formatIdDriver = Number(idDriver.toString().split(" ")[0]);
+
     const formatIdCar = Number(idCar.toString().split(" ")[0]);
+
     const formatIdClient = Number(idClient.toString().split(" ")[0]);
 
     const formatStartTrip = startTripDate + "T" + startTripHours;
@@ -102,9 +105,9 @@ export default function ModalAddEditDisplacement(
         idCar: 0,
       });
 
-      return console.log("Deslocamento iniciado");
+      return toast.success("Deslocamento iniciado!");
     } catch (error: any) {
-      console.log(error.response.data);
+      return toast.error(error.response.data);
     }
   }
 
@@ -112,7 +115,7 @@ export default function ModalAddEditDisplacement(
     const { finalKm, endTripDate, endTripHours, observation } = formEdit;
 
     if (!finalKm || !endTripDate || !endTripHours || !observation) {
-      return console.log("preencha todos os campos");
+      return toast.info("Preencha todos os campos!");
     }
 
     const formatEndTrip = endTripDate + "T" + endTripHours;
@@ -136,9 +139,9 @@ export default function ModalAddEditDisplacement(
 
       handleClose();
 
-      return console.log("Deslocamento encerrado!");
+      return toast.success("Deslocamento encerrado!");
     } catch (error: any) {
-      console.log(error.response.data);
+      return toast.error(error.response.data);
     }
   }
 

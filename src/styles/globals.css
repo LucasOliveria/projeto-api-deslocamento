@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
-
 :root {
   min-height: 100vh;
 }
@@ -32,6 +31,12 @@ body {
 ::-webkit-scrollbar-thumb {
   background-color: #3f3d56;
   border-radius: 10px;
+}
+
+.Toastify__toast-theme--colored.Toastify__toast--info,
+.Toastify__toast-theme--colored.Toastify__toast--error,
+.Toastify__toast-theme--colored.Toastify__toast--success {
+  border-radius: 8px;
 }
 
 .MuiSvgIcon-root {
@@ -109,7 +114,7 @@ body {
 }
 
 .MuiBox-root {
-  max-height: 500px;
+  max-height: 90%;
   border-radius: 20px;
   background-color: #dedede;
   background-image: url("../assets/logo2.svg");
@@ -157,6 +162,20 @@ body {
   .MuiBottomNavigationAction-label.Mui-selected {
     font-size: 0.9rem;
   }
+
+  .Toastify__toast-theme--colored.Toastify__toast--info,
+  .Toastify__toast-theme--colored.Toastify__toast--error,
+  .Toastify__toast-theme--colored.Toastify__toast--success {
+    border-radius: 8px;
+    width: 340px;
+    margin-top: 10px;
+  }
+
+  .Toastify__toast-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 @media (max-width:915px) {
@@ -182,8 +201,8 @@ body {
   }
 
   .MuiBox-root {
-    width: 355px;
-    max-height: 355px;
+    width: 350px;
+    max-height: 350px;
     padding: 19px;
     border-radius: 10px;
   }

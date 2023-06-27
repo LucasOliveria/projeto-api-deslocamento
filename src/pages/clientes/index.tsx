@@ -7,7 +7,7 @@ import InfoTable from "@/components/Table";
 import api from "@/services/api";
 import styles from '@/styles/Home.module.css';
 import { useEffect, useState } from "react";
-
+import { toast } from "react-toastify";
 
 export default function Clients() {
   const [clients, setClients] = useState([]);
@@ -35,7 +35,7 @@ export default function Clients() {
 
       setClients(response.data);
     } catch (error: any) {
-      console.log(error.response.data);
+      toast.error("500 - Erro do servido. Recarregue a página!");
     }
   }
 

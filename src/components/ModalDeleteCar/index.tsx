@@ -6,6 +6,7 @@ import Modal from '@mui/material/Modal';
 import Stack from '@mui/material/Stack';
 import { Dispatch, SetStateAction } from 'react';
 import styles from "../../styles/Globals.module.css";
+import { toast } from 'react-toastify';
 
 const style = {
   transform: 'translate(-50%, -50%)',
@@ -49,9 +50,9 @@ export default function ModalDeleteCar(
 
       getCars();
 
-      console.log("Veículo Excluído");
+      return toast.success("Veículo Excluído");
     } catch (error: any) {
-      console.log("Veículo não excluído. Erro ao atualizar as entradas");
+      return toast.error("500 - Veículo não excluído. Erro ao atualizar as entradas");
     }
   }
 

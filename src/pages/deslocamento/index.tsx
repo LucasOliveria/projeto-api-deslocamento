@@ -8,6 +8,7 @@ import InfoTable from "@/components/Table";
 import api from "@/services/api";
 import styles from '@/styles/Home.module.css';
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 export default function Displacements() {
   const [displacements, setDisplacements] = useState([]);
@@ -35,16 +36,13 @@ export default function Displacements() {
     plate: ""
   });
 
-
-
   async function getDisplacements() {
     try {
       const response = await api.get("/Deslocamento");
 
       setDisplacements(response.data);
     } catch (error) {
-      console.log(error);
-
+      toast.error("500 - Erro do servido. Recarregue a página!");
     }
   }
 
@@ -55,20 +53,17 @@ export default function Displacements() {
   return (
     <div className={styles.body}>
       <Header valueNav={3} />
-
       <main className={styles.main}>
         <div className={styles.containerTable}>
           <div className={styles.container_title}>
             <h1 className={styles.title_table}>Deslocamento</h1>
           </div>
-
           <div className={styles.container_add_button}>
             <CustomButtonOpen
               setTitleModal={setTitleModal}
               setOpenAddEditDisplacement={setOpenAddEditDisplacement}
             />
           </div>
-
           <InfoTable
             header={
               [
@@ -89,15 +84,12 @@ export default function Displacements() {
             setFormEditDisplacement={setFormEdit}
             setOpenModalDelete={setOpenModalDelete}
             setSaveId={setSaveId}
-
             setDetails={setDetails}
             setOpenModalDetails={setOpenModalDetails}
           />
         </div>
       </main>
-
       <Footer />
-
       <ModalAddEditDisplacement
         openAddEditDisplacement={openAddEditDisplacement}
         setOpenAddEditDisplacement={setOpenAddEditDisplacement}
@@ -106,17 +98,14 @@ export default function Displacements() {
         formEdit={formEdit}
         setFormEdit={setFormEdit}
         saveId={saveId}
-
         details={details}
       />
-
       <ModalDeleteDisplacement
         openModalDelete={openModalDelete}
         setOpenModalDelete={setOpenModalDelete}
         getDisplacements={getDisplacements}
         saveId={saveId}
       />
-
       <ModalDetails
         details={details}
         openModalDetails={openModalDetails}

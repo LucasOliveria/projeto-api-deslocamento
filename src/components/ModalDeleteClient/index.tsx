@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import Stack from '@mui/material/Stack';
 import { Dispatch, SetStateAction } from 'react';
+import { toast } from 'react-toastify';
 import styles from "../../styles/Globals.module.css";
 
 const style = {
@@ -49,9 +50,10 @@ export default function ModalDeleteClient(
 
       getClients();
 
-      console.log("Cliente Excluído");
+      return toast.success("Cliente excluído!");
     } catch (error: any) {
-      console.log("Cliente não excluído. Erro ao atualizar as entradas");
+      return toast.error("500 - Cliente não excluído. Erro ao atualizar as entradas");
+
     }
   }
 
