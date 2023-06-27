@@ -1,20 +1,20 @@
 import BadgeIcon from '@mui/icons-material/Badge';
+import CloseIcon from '@mui/icons-material/Close';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 import GroupIcon from '@mui/icons-material/Group';
 import HomeIcon from '@mui/icons-material/Home';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
+import MenuIcon from '@mui/icons-material/Menu';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import Box from '@mui/material/Box';
 import { useRouter } from 'next/router';
-import { useState, useEffect } from "react";
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
+import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 
 export default function NavBar({ valueNav }: { valueNav: number }) {
   const [value, setValue] = useState(valueNav);
+
   const router = useRouter();
 
   const [openMenu, setOpenMenu] = useState(false);
@@ -27,10 +27,10 @@ export default function NavBar({ valueNav }: { valueNav: number }) {
 
     document.body.style.overflowY = "auto"
 
-  }, [openMenu])
+  }, [openMenu]);
 
   return (
-    <Box
+    <div
       className={`${styles.nav_bar} ${openMenu && styles.modal_fullscreen}`}
     >
       {openMenu ?
@@ -44,7 +44,6 @@ export default function NavBar({ valueNav }: { valueNav: number }) {
           className={styles.open_icon_menu}
         />
       }
-
       <BottomNavigation
         showLabels
         className={styles.bottons_nav}
@@ -85,6 +84,6 @@ export default function NavBar({ valueNav }: { valueNav: number }) {
           icon={<ExitToAppOutlinedIcon />}
         />
       </BottomNavigation>
-    </Box>
+    </div>
   );
 }

@@ -148,7 +148,6 @@ export default function InfoTable(
 
   function handleOpenDeleteModal(id: number) {
     setOpenModalDelete && setOpenModalDelete(true);
-    console.log(id);
 
     setSaveId(id);
   }

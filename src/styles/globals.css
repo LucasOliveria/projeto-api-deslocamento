@@ -26,6 +26,7 @@ body {
 
 ::-webkit-scrollbar-track {
   background-color: #e6e6e6;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -61,7 +62,6 @@ body {
   font-size: 1rem;
 }
 
-/*  */
 .MuiButton-root {
   margin-bottom: 25px;
   height: 35px;
@@ -108,14 +108,15 @@ body {
   z-index: 0;
 }
 
-/*  */
 .MuiBox-root {
+  max-height: 500px;
   border-radius: 20px;
   background-color: #dedede;
   background-image: url("../assets/logo2.svg");
   background-repeat: no-repeat;
   background-size: 180px;
   background-position: right;
+  overflow: auto;
 }
 
 .MuiTypography-root {
@@ -129,7 +130,6 @@ body {
   text-decoration: underline;
 }
 
-/*  */
 .MuiTextField-root {
   width: 300px;
 }
@@ -179,5 +179,12 @@ body {
 
   .MuiButton-root:hover {
     background-color: #73c927;
+  }
+
+  .MuiBox-root {
+    width: 355px;
+    max-height: 355px;
+    padding: 19px;
+    border-radius: 10px;
   }
 }

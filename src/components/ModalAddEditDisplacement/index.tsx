@@ -1,7 +1,7 @@
 import api from '@/services/api';
 import PropsModalAddEditDisplacement from '@/types/PropsModalAddEditDisplacement';
 import CloseIcon from '@mui/icons-material/Close';
-import { TextField, Typography } from '@mui/material';
+import { TextField } from '@mui/material';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { format } from 'date-fns';
@@ -10,8 +10,6 @@ import styles from "../../styles/global.module.css";
 import SendButton from '../SendButton';
 
 const style = {
-  maxWidth: 400,
-  height: "600px",
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
@@ -106,7 +104,7 @@ export default function ModalAddEditDisplacement(
 
       return console.log("Deslocamento iniciado");
     } catch (error: any) {
-      console.log(error);
+      console.log(error.response.data);
     }
   }
 
@@ -142,7 +140,6 @@ export default function ModalAddEditDisplacement(
     } catch (error: any) {
       console.log(error.response.data);
     }
-
   }
 
   async function submitForm(event: FormEvent<HTMLFormElement>) {
@@ -180,7 +177,7 @@ export default function ModalAddEditDisplacement(
   }
 
   useEffect(() => {
-    handleDriversCarsClientsList()
+    handleDriversCarsClientsList();
   }, []);
 
   return (

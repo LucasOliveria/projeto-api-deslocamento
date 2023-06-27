@@ -56,7 +56,7 @@ export default function ModalDeleteDriver(
   }
 
   function handleClose() {
-    setOpenModalDelete(false)
+    setOpenModalDelete(false);
   }
 
   return (
@@ -68,7 +68,7 @@ export default function ModalDeleteDriver(
       >
         <Box sx={style}>
           <CloseIcon
-            sx={{ position: "absolute", top: 5, right: 12, cursor: "pointer" }}
+            sx={{ position: "absolute", top: 0, right: 2, cursor: "pointer", width: 27 }}
             onClick={handleClose}
           />
           <h2 className={styles.h2_modal_delete}>

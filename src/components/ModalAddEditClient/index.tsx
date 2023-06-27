@@ -9,11 +9,8 @@ import SendButton from '../SendButton';
 import styles from "../../styles/global.module.css";
 
 const style = {
-  maxWidth: 400,
-  height: "600px",
   border: '2px solid #000',
   boxShadow: 24,
-  bgcolor: 'background.paper',
   p: 4,
   position: 'absolute' as 'absolute',
   top: '50%',
@@ -78,7 +75,6 @@ export default function ModalAddEditClient(
     } catch (error: any) {
       console.log(error.response.data);
     }
-
   }
 
   async function editClient() {
@@ -116,7 +112,6 @@ export default function ModalAddEditClient(
     } catch (error: any) {
       console.log(error.response.data);
     }
-
   }
 
   async function submitForm(event: FormEvent<HTMLFormElement>) {

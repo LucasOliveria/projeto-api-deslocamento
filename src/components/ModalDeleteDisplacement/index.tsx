@@ -68,7 +68,7 @@ export default function ModalDeleteDisplacement(
       >
         <Box sx={style}>
           <CloseIcon
-            sx={{ position: "absolute", top: 5, right: 12, cursor: "pointer" }}
+            sx={{ position: "absolute", top: 2, right: 7, cursor: "pointer" }}
             onClick={handleClose}
           />
           <h2 className={styles.h2_modal_delete}>

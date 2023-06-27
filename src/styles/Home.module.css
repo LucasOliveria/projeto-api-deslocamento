@@ -27,7 +27,7 @@
  	justify-content: flex-start;
  	align-items: flex-start;
  	flex-direction: column;
- 	max-width: 950px;
+ 	width: 75%;
  	height: 100%;
  	padding: 20px 0;
  }

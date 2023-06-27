@@ -10,11 +10,8 @@ import SendButton from '../SendButton';
 import { format } from 'date-fns';
 
 const style = {
-  maxWidth: 400,
-  height: "600px",
   border: '2px solid #000',
   boxShadow: 24,
-  bgcolor: 'background.paper',
   p: 4,
   position: 'absolute' as 'absolute',
   top: '50%',
@@ -115,11 +112,9 @@ export default function ModalAddEditDriver(
     } catch (error: any) {
       console.log(error.response.data);
     }
-
   }
 
   async function editDriver() {
-
     const { category, expiresIn } = formEdit;
 
     if (!category || !expiresIn) {

@@ -1,6 +1,5 @@
 .form {
   height: 100%;
-  color: currentColor;
   gap: 5px;
   display: flex;
   flex-direction: column;
@@ -10,7 +9,7 @@
 }
 
 .form h1 {
-  font-size: 28px;
+  font-size: 24px;
   color: #3f3d56;
 }
 
@@ -25,7 +24,7 @@
 }
 
 .container_date {
-  width: 100%;
+  width: 300px;
 }
 
 .container_time {
@@ -82,4 +81,34 @@
   padding: 10px;
   align-self: flex-start;
   border: 1px solid #1b1b1b;
+}
+
+@media (max-width:915px) {
+  .form {
+    margin-top: 0px;
+  }
+
+  .form h1 {
+    font-size: 2rem;
+    color: #3f3d56;
+  }
+
+  .form p {
+    font-size: 1.4rem;
+  }
+
+  .form h3 {
+    display: none;
+  }
+
+  .container_time {
+    width: 300px;
+    align-self: center;
+  }
+
+  .details_form {
+    width: 300px;
+    align-self: center;
+    padding: 0 0 0 10px;
+  }
 }

@@ -46,20 +46,17 @@ export default function Clients() {
   return (
     <div className={styles.body}>
       <Header valueNav={1} />
-
       <main className={styles.main}>
         <div className={styles.containerTable}>
           <div className={styles.container_title}>
             <h1 className={styles.title_table}>Clientes</h1>
           </div>
-
           <div className={styles.container_add_button}>
             <CustomButtonOpen
               setTitleModal={setTitleModal}
               setOpenAddEditClient={setOpenAddEditClient}
             />
           </div>
-
           <InfoTable
             header={
               [
@@ -81,9 +78,7 @@ export default function Clients() {
           />
         </div>
       </main>
-
       <Footer />
-
       <ModalAddEditClient
         openAddEditClient={openAddEditClient}
         setOpenAddEditClient={setOpenAddEditClient}
@@ -93,7 +88,6 @@ export default function Clients() {
         setFormEdit={setFormEdit}
         saveId={saveId}
       />
-
       <ModalDeleteClient
         openModalDelete={openModalDelete}
         setOpenModalDelete={setOpenModalDelete}
