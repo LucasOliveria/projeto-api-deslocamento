@@ -7,7 +7,7 @@
   display: none;
 }
 
-.bottons_nav {
+.nav_bar.bottons_nav {
   display: flex;
 }
 
@@ -19,13 +19,13 @@
     font-size: 3.5rem;
   }
 
-  .close_icon_menu {
+  .nav_bar .close_icon_menu {
     position: absolute;
     top: 45px;
     right: 20px;
   }
 
-  .modal_fullscreen {
+  .nav_bar.modal_fullscreen {
     width: 100vw;
     height: 100vh;
     border-radius: 0;
@@ -36,7 +36,7 @@
     overflow-y: hidden;
   }
 
-  .modal_fullscreen .bottons_nav {
+  .nav_bar.modal_fullscreen .bottons_nav {
     display: flex;
   }
 
