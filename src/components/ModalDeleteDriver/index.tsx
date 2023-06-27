@@ -6,7 +6,7 @@ import Modal from '@mui/material/Modal';
 import Stack from '@mui/material/Stack';
 import { Dispatch, SetStateAction } from 'react';
 import { toast } from 'react-toastify';
-import styles from "../../styles/Globals.module.css";
+import styles from "../../styles/Forms.module.css";
 
 const style = {
   transform: 'translate(-50%, -50%)',

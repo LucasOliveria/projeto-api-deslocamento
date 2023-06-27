@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { toast } from 'react-toastify';
-import styles from "../../styles/Globals.module.css";
+import styles from "../../styles/Forms.module.css";
 import SendButton from '../SendButton';
 
 const style = {

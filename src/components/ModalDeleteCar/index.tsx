@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import Stack from '@mui/material/Stack';
 import { Dispatch, SetStateAction } from 'react';
-import styles from "../../styles/Globals.module.css";
+import styles from "../../styles/Forms.module.css";
 import { toast } from 'react-toastify';
 
 const style = {

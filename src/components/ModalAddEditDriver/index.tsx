@@ -7,7 +7,7 @@ import Modal from '@mui/material/Modal';
 import { format } from 'date-fns';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { toast } from 'react-toastify';
-import styles from "../../styles/Globals.module.css";
+import styles from "../../styles/Forms.module.css";
 import SendButton from '../SendButton';
 
 const style = {
