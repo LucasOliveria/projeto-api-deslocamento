@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { format } from 'date-fns';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import styles from "../../styles/global.module.css";
+import styles from "../../styles/Globals.module.css";
 import SendButton from '../SendButton';
 
 const style = {

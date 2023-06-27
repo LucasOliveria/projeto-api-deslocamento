@@ -2,7 +2,7 @@ import api from '@/services/api';
 import PropsTable from '@/types/PropsTable';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
-import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined';
+import EditLocationOutlinedIcon from '@mui/icons-material/EditLocationOutlined';
 import WhereToVoteOutlinedIcon from '@mui/icons-material/WhereToVoteOutlined';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -12,7 +12,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import format from 'date-fns/format';
-import EditLocationOutlinedIcon from '@mui/icons-material/EditLocationOutlined';
 
 export default function InfoTable(
   { header,

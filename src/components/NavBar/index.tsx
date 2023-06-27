@@ -10,7 +10,7 @@ import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from "react";
-import styles from "./styles.module.css";
+import styles from "../../styles/NavBar.module.css";
 
 export default function NavBar({ valueNav }: { valueNav: number }) {
   const [value, setValue] = useState(valueNav);

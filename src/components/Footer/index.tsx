@@ -1,6 +1,6 @@
-import styles from './styles.module.css'
 import EmailIcon from '@mui/icons-material/Email';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import styles from '../../styles/Footer.module.css';
 
 export default function Footer() {
   return (

@@ -4,10 +4,10 @@ import CloseIcon from '@mui/icons-material/Close';
 import { TextField } from '@mui/material';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import { ChangeEvent, FormEvent, useState } from 'react';
-import styles from "../../styles/global.module.css";
-import SendButton from '../SendButton';
 import { format } from 'date-fns';
+import { ChangeEvent, FormEvent, useState } from 'react';
+import styles from "../../styles/Globals.module.css";
+import SendButton from '../SendButton';
 
 const style = {
   border: '2px solid #000',

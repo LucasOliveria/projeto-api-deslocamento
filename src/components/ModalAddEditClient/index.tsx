@@ -5,8 +5,8 @@ import { TextField } from '@mui/material';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { ChangeEvent, FormEvent, useState } from 'react';
+import styles from "../../styles/Globals.module.css";
 import SendButton from '../SendButton';
-import styles from "../../styles/global.module.css";
 
 const style = {
   border: '2px solid #000',

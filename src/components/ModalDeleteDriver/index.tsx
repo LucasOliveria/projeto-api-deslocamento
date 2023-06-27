@@ -1,11 +1,11 @@
+import api from '@/services/api';
 import CloseIcon from '@mui/icons-material/Close';
 import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-import { Dispatch, SetStateAction } from 'react';
 import Button from '@mui/material/Button';
+import Modal from '@mui/material/Modal';
 import Stack from '@mui/material/Stack';
-import styles from '../../styles/global.module.css';
-import api from '@/services/api';
+import { Dispatch, SetStateAction } from 'react';
+import styles from "../../styles/Globals.module.css";
 
 const style = {
   transform: 'translate(-50%, -50%)',
