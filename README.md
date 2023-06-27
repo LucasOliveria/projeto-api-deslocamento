@@ -34,17 +34,25 @@ O objetivo do projeto consiste em criar uma aplicação de gerenciamento de serv
 
 <h2 style="font-family: sans-serif;">Layout:</h2>
 
-<h4>Tela inicial</h4>
-
-<h4>Tela Clientes</h4>
-
-<h4>Tela Condutores</h4>
-
-<h4>Tela Deslocamento</h4>
-
-<h4>Tela Veículos</h4>
-
-
+<img src="./src/images/Tela inicial.png" alt="">
+<br/>
+<img src="./src/images/Clientes.png" alt="">
+<br/>
+<img src="./src/images/Condutores.png" alt="">
+<br/>
+<img src="./src/images/Deslocamento.png" alt="">
+<br/>
+<img src="./src/images/Veículos.png" alt="">
+<br/>
+<img src="./src/images/Cadastros.png" alt="">
+<br/>
+<img src="./src/images/Edicao.png" alt="">
+<br/>
+<img src="./src/images/Exclusao.png" alt="">
+<br/>
+<img src="./src/images/mobile-1.png" alt="">
+<br/>
+<img src="./src/images/mobile-2.png" alt="">
 
 <h2 style="font-family: sans-serif;">Autor</h2>
 

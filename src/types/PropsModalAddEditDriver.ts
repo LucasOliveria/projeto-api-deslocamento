@@ -11,9 +11,11 @@ export default interface PropsModalAddEditDriver {
     category: string
     expiresIn: string
   }
+
   setFormEdit: Dispatch<SetStateAction<{
     category: string
     expiresIn: string
   }>>
+
   saveId: number
 }

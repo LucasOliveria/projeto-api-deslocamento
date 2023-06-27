@@ -12,6 +12,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import format from 'date-fns/format';
+import { toast } from 'react-toastify';
 
 export default function InfoTable(
   { header,
@@ -50,7 +51,7 @@ export default function InfoTable(
 
 
     } catch (error: any) {
-      console.log(error.response.data);
+      toast.error(error.response.data);
     }
   }
 
@@ -73,7 +74,7 @@ export default function InfoTable(
       });
 
     } catch (error: any) {
-      console.log(error.response.data);
+      toast.error(error.response.data);
     }
   }
 
@@ -92,7 +93,7 @@ export default function InfoTable(
         currentKm: car.data.kmAtual
       })
     } catch (error: any) {
-      console.log(error.response.data);
+      toast.error(error.response.data);
     }
   }
 
@@ -110,7 +111,7 @@ export default function InfoTable(
         expiresIn: driver.data.vencimentoHabilitacao.slice(0, 10)
       })
     } catch (error: any) {
-      console.log(error.response.data);
+      toast.error(error.response.data);
     }
   }
 
@@ -141,7 +142,7 @@ export default function InfoTable(
       });
 
     } catch (error: any) {
-      console.log(error.response.data);
+      toast.error(error.response.data);
     }
   }
 

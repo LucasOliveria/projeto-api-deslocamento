@@ -4,7 +4,9 @@ export default interface PropsModalAddEditClient {
   openAddEditClient: boolean
   setOpenAddEditClient: Dispatch<SetStateAction<boolean>>
   titleModal: string
+
   getClients: () => Promise<void>
+
   formEdit: {
     name: string,
     adress: string,
@@ -13,6 +15,7 @@ export default interface PropsModalAddEditClient {
     city: string,
     state: string
   }
+
   setFormEdit: Dispatch<SetStateAction<{
     name: string,
     adress: string,
@@ -21,5 +24,6 @@ export default interface PropsModalAddEditClient {
     city: string,
     state: string
   }>>
+
   saveId: number
 }
