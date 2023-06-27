@@ -2,8 +2,8 @@
   background: none;
 }
 
-.close_icon_menu,
-.open_icon_menu {
+.nav_bar .close_icon_menu,
+.nav_bar .open_icon_menu {
   display: none;
 }
 
@@ -13,8 +13,8 @@
 
 @media (max-width:600px) {
 
-  .close_icon_menu,
-  .open_icon_menu {
+  .nav_bar .close_icon_menu,
+  .nav_bar .open_icon_menu {
     display: block;
     font-size: 3.5rem;
   }
