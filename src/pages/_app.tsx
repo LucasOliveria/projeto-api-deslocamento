@@ -4,7 +4,6 @@ import '../styles/globals.css'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import 'react-toastify/dist/ReactToastify.css';
-import { StyledEngineProvider } from "@mui/material/styles";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -15,9 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/logo.svg" />
       </Head>
-      <StyledEngineProvider injectFirst>
-        <Component {...pageProps} />
-      </StyledEngineProvider>
+      <Component {...pageProps} />
       <ToastContainer
         position="top-right"
         autoClose={1500}
