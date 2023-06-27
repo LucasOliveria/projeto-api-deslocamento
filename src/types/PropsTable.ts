@@ -6,8 +6,6 @@ export default interface PropsTable {
     label: string
   }[]
 
-
-
   clients?: {
     id: number,
     numeroDocumento: string,
@@ -29,8 +27,6 @@ export default interface PropsTable {
     state: string
   }>>
 
-
-
   drivers?: {
     id: number,
     nome: string,
@@ -43,8 +39,6 @@ export default interface PropsTable {
     category: string
     expiresIn: string
   }>>
-
-
 
   displacements?: {
     id: number,
@@ -59,14 +53,19 @@ export default interface PropsTable {
     idVeiculo: number,
     idCliente: number
   }[]
+  setOpenAddEditDisplacement?: Dispatch<SetStateAction<boolean>>
+  setFormEditDisplacement?: Dispatch<SetStateAction<{
+    finalKm: number
+    endTripDate: string
+    endTripHours: string
+    observation: string
+  }>>
   setDetails?: Dispatch<SetStateAction<{
     clientName: string
     driverName: string
     plate: string
   }>>
-  setOpen?: Dispatch<SetStateAction<boolean>>
-
-
+  setOpenModalDetails?: Dispatch<SetStateAction<boolean>>
 
   cars?: {
     id: number,
@@ -81,7 +80,6 @@ export default interface PropsTable {
     year: number
     currentKm: number
   }>>
-
 
   setTitleModal: Dispatch<SetStateAction<string>>
   setOpenModalDelete: Dispatch<SetStateAction<boolean>>

@@ -94,23 +94,25 @@ body {
   cursor: pointer;
 }
 
-.MuiTableCell-body:last-of-type:hover,
-.MuiTableCell-body:nth-last-child(2):hover {
-  background-color: #e6e6e6;
+.MuiTableHead-root {
+  background-color: #3f3d56;
+  border-color: #3f3d56;
 }
 
 .MuiTableCell-head {
+  min-width: 100px;
   font-size: 1.3rem;
   font-weight: 700;
   color: #ffffff;
   background-color: #3f3d56;
+  border: none;
   z-index: 0;
 }
 
 /*  */
 .MuiBox-root {
   border-radius: 20px;
-  background-color: hsl(0, 0%, 87%);
+  background-color: #dedede;
   background-image: url("../assets/logo2.svg");
   background-repeat: no-repeat;
   background-size: 180px;
@@ -129,7 +131,6 @@ body {
 }
 
 /*  */
-
 .MuiTextField-root {
   width: 300px;
 }

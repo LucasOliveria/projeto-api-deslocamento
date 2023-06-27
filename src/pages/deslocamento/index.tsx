@@ -2,6 +2,7 @@ import CustomButtonOpen from "@/components/CustomButtonOpen";
 import Footer from "@/components/Footer";
 import Header from '@/components/Header';
 import ModalAddEditDisplacement from "@/components/ModalAddEditDisplacement";
+import ModalDeleteDisplacement from "@/components/ModalDeleteDisplacement";
 import ModalDetails from "@/components/ModalDetails";
 import InfoTable from "@/components/Table";
 import api from "@/services/api";
@@ -16,7 +17,7 @@ export default function Displacements() {
   const [titleModal, setTitleModal] = useState("");
 
   const [formEdit, setFormEdit] = useState({
-    finalKm: "",
+    finalKm: 0,
     endTripDate: "",
     endTripHours: "",
     observation: ""
@@ -26,9 +27,8 @@ export default function Displacements() {
 
   const [saveId, setSaveId] = useState(0);
 
+  const [openModalDetails, setOpenModalDetails] = useState(false);
 
-
-  const [open, setOpen] = useState(false);
   const [details, setDetails] = useState({
     clientName: "",
     driverName: "",
@@ -54,7 +54,6 @@ export default function Displacements() {
 
   return (
     <div className={styles.body}>
-
       <Header valueNav={3} />
 
       <main className={styles.main}>
@@ -71,7 +70,6 @@ export default function Displacements() {
           </div>
 
           <InfoTable
-            setOpen={setOpen}
             header={
               [
                 { id: 1, label: "Km Inicial" },
@@ -86,10 +84,14 @@ export default function Displacements() {
               ]
             }
             displacements={displacements}
-            setDetails={setDetails}
+            setOpenAddEditDisplacement={setOpenAddEditDisplacement}
             setTitleModal={setTitleModal}
+            setFormEditDisplacement={setFormEdit}
             setOpenModalDelete={setOpenModalDelete}
             setSaveId={setSaveId}
+
+            setDetails={setDetails}
+            setOpenModalDetails={setOpenModalDetails}
           />
         </div>
       </main>
@@ -104,12 +106,21 @@ export default function Displacements() {
         formEdit={formEdit}
         setFormEdit={setFormEdit}
         saveId={saveId}
+
+        details={details}
+      />
+
+      <ModalDeleteDisplacement
+        openModalDelete={openModalDelete}
+        setOpenModalDelete={setOpenModalDelete}
+        getDisplacements={getDisplacements}
+        saveId={saveId}
       />
 
       <ModalDetails
         details={details}
-        open={open}
-        setOpen={setOpen}
+        openModalDetails={openModalDetails}
+        setOpenModalDetails={setOpenModalDetails}
       />
     </div>
   )

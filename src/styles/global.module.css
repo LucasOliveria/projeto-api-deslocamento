@@ -11,6 +11,17 @@
 
 .form h1 {
   font-size: 28px;
+  color: #3f3d56;
+}
+
+.form h3 {
+  align-self: center;
+  color: #3f3d56;
+  margin-bottom: 10px;
+}
+
+.form strong {
+  color: #3f3d56;
 }
 
 .container_date {
@@ -44,7 +55,7 @@
 .input_date {
   width: 100%;
   border: none;
-  background-color: #dedede;
+  background-color: #dedede00;
   border-bottom: 1px solid #1d1d1d88;
 }
 
@@ -60,4 +71,14 @@
 
 .red_button:hover {
   background-color: #cc0f0f;
+}
+
+.details_form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+  align-self: flex-start;
+  border: 1px solid #1b1b1b;
 }

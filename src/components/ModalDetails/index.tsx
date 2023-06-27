@@ -1,3 +1,4 @@
+import CloseIcon from '@mui/icons-material/Close';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
@@ -15,9 +16,9 @@ const style = {
 };
 
 export default function ModalDetails(
-  { open, setOpen, details }: {
-    open: boolean,
-    setOpen: Dispatch<SetStateAction<boolean>>,
+  { openModalDetails, setOpenModalDetails, details }: {
+    openModalDetails: boolean,
+    setOpenModalDetails: Dispatch<SetStateAction<boolean>>,
     details: {
       clientName: string
       driverName: string
@@ -25,17 +26,23 @@ export default function ModalDetails(
     }
   }
 ) {
-  const handleClose = () => setOpen(false);
+
+  function handleClose() {
+    setOpenModalDetails(false);
+  }
 
   return (
     <div>
       <Modal
-        open={open}
-        onClose={handleClose}
+        open={openModalDetails}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          <CloseIcon
+            sx={{ position: "absolute", top: 5, right: 12, cursor: "pointer" }}
+            onClick={handleClose}
+          />
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Detalhes
           </Typography>

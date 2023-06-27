@@ -1,7 +1,7 @@
 import api from '@/services/api';
 import PropsModalAddEditDisplacement from '@/types/PropsModalAddEditDisplacement';
 import CloseIcon from '@mui/icons-material/Close';
-import { TextField } from '@mui/material';
+import { TextField, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { format } from 'date-fns';
@@ -14,7 +14,6 @@ const style = {
   height: "600px",
   border: '2px solid #000',
   boxShadow: 24,
-  bgcolor: 'background.paper',
   p: 4,
   position: 'absolute' as 'absolute',
   top: '50%',
@@ -30,12 +29,13 @@ export default function ModalAddEditDisplacement(
     getDisplacements,
     formEdit,
     setFormEdit,
-    saveId }: PropsModalAddEditDisplacement
+    saveId,
+    details }: PropsModalAddEditDisplacement
 ) {
   const [formAdd, setFormAdd] = useState({
-    initialKm: "",
+    initialKm: 0,
     startTripDate: format(new Date(), "yyyy-MM-dd"),
-    startTriphours: format(new Date(), "HH:mm"),
+    startTripHours: format(new Date(), "HH:mm"),
     reason: "",
     checkList: "",
     observation: "",
@@ -66,9 +66,9 @@ export default function ModalAddEditDisplacement(
   }
 
   async function addDisplacement() {
-    const { initialKm, startTripDate, startTriphours, reason, checkList, observation, idClient, idDriver, idCar } = formAdd;
+    const { initialKm, startTripDate, startTripHours, reason, checkList, observation, idClient, idDriver, idCar } = formAdd;
 
-    if (!initialKm || !startTripDate || !startTriphours || !reason || !checkList || !observation || !idClient || !idDriver || !idCar) {
+    if (!initialKm || !startTripDate || !startTripHours || !reason || !checkList || !observation || !idClient || !idDriver || !idCar) {
       return console.log("preencha todos os campos!");
     }
 
@@ -76,8 +76,7 @@ export default function ModalAddEditDisplacement(
     const formatIdCar = Number(idCar.toString().split(" ")[0]);
     const formatIdClient = Number(idClient.toString().split(" ")[0]);
 
-    const formatStartTrip = startTripDate + "T" + startTriphours
-    console.log(formatStartTrip);
+    const formatStartTrip = startTripDate + "T" + startTripHours;
 
     try {
       await api.post("/Deslocamento/IniciarDeslocamento", {
@@ -94,9 +93,9 @@ export default function ModalAddEditDisplacement(
       getDisplacements();
 
       setFormAdd({
-        initialKm: "",
+        initialKm: 0,
         startTripDate: format(new Date(), "yyyy-MM-dd"),
-        startTriphours: format(new Date(), "HH:mm"),
+        startTripHours: format(new Date(), "HH:mm"),
         reason: "",
         checkList: "",
         observation: "",
@@ -118,18 +117,20 @@ export default function ModalAddEditDisplacement(
       return console.log("preencha todos os campos");
     }
 
+    const formatEndTrip = endTripDate + "T" + endTripHours;
+
     try {
-      await api.put(`/Condutor/${saveId}`, {
+      await api.put(`/Deslocamento/${saveId}/EncerrarDeslocamento`, {
         id: saveId,
         kmFinal: finalKm,
-        fimDeslocamento: "2023-06-26T12:03:41.745Z",
-        observacao: "string"
+        fimDeslocamento: new Date(formatEndTrip),
+        observacao: observation
       });
 
       getDisplacements();
 
       setFormEdit({
-        finalKm: "",
+        finalKm: 0,
         endTripDate: "",
         endTripHours: "",
         observation: ""
@@ -166,9 +167,9 @@ export default function ModalAddEditDisplacement(
     setOpenAddEditDisplacement(false);
 
     setFormAdd({
-      initialKm: "",
+      initialKm: 0,
       startTripDate: format(new Date(), "yyyy-MM-dd"),
-      startTriphours: format(new Date(), "HH:mm"),
+      startTripHours: format(new Date(), "HH:mm"),
       reason: "",
       checkList: "",
       observation: "",
@@ -201,9 +202,14 @@ export default function ModalAddEditDisplacement(
             >
               <h1>{titleModal}</h1>
               <TextField
+                type="number"
                 label="Km Inicial"
                 name='initialKm'
                 value={formAdd.initialKm}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                inputProps={{ min: 0, step: 'any' }}
                 variant="standard"
                 autoComplete='on'
                 onChange={handleChanceInput}
@@ -227,16 +233,16 @@ export default function ModalAddEditDisplacement(
               <div className={styles.container_time}>
                 <label
                   className={styles.label_date}
-                  htmlFor="startTriphours"
+                  htmlFor="startTripHours"
                 >
                   Hora Inicial
                 </label>
                 <input
                   className={styles.input_time}
-                  id="startTriphours"
+                  id="startTripHours"
                   type="time"
-                  name="startTriphours"
-                  value={formAdd.startTriphours}
+                  name="startTripHours"
+                  value={formAdd.startTripHours}
                   onChange={handleChanceInput}
                 />
               </div>
@@ -318,47 +324,82 @@ export default function ModalAddEditDisplacement(
               <SendButton />
             </form>
           }
-          {/* {titleModal === "Editar Condutor" &&
+          {titleModal === "Encerrar Deslocamento" &&
             <form
               className={styles.form}
               onSubmit={submitForm}
             >
               <h1>{titleModal}</h1>
+              <div className={styles.details_form}>
+                <h3 >
+                  Detalhes
+                </h3>
+                <p  >
+                  <strong>Cliente:</strong> {details.clientName}
+                </p>
+                <p  >
+                  <strong>Condutor:</strong> {details.driverName}
+                </p>
+                <p >
+                  <strong>Placa:</strong> {details.plate}
+                </p>
+              </div>
               <TextField
-                select
-                label="Categoria"
-                name='category'
-                value={formEdit.category}
-                SelectProps={{
-                  native: true,
+                type="number"
+                label="Km Final"
+                name='finalKm'
+                value={formEdit.finalKm}
+                InputLabelProps={{
+                  shrink: true,
                 }}
+                inputProps={{ min: 0, step: 'any' }}
                 variant="standard"
+                autoComplete='on'
                 onChange={handleChanceInput}
-              >
-                {currencies.map((option) => (
-                  <option key={option.id} value={option.id}>
-                    {option.label}
-                  </option>
-                ))}
-              </TextField>
+              />
               <div className={styles.container_date}>
                 <label
                   className={styles.label_date}
-                  htmlFor="expiresIn">
-                  Data de Vencimento
+                  htmlFor="endTripDate"
+                >
+                  Data de encerramento
                 </label>
                 <input
                   className={styles.input_date}
-                  id="expiresIn"
+                  id="endTripDate"
                   type="date"
-                  name="expiresIn"
-                  value={formEdit.expiresIn}
+                  name="endTripDate"
+                  value={formEdit.endTripDate}
                   onChange={handleChanceInput}
                 />
               </div>
+              <div className={styles.container_time}>
+                <label
+                  className={styles.label_date}
+                  htmlFor="endTripHours"
+                >
+                  Hora de encerramento
+                </label>
+                <input
+                  className={styles.input_time}
+                  id="endTripHours"
+                  type="time"
+                  name="endTripHours"
+                  value={formEdit.endTripHours}
+                  onChange={handleChanceInput}
+                />
+              </div>
+              <TextField
+                label="Observação"
+                name='observation'
+                value={formEdit.observation}
+                variant="standard"
+                autoComplete='on'
+                onChange={handleChanceInput}
+              />
               <SendButton />
             </form>
-          } */}
+          }
         </Box>
       </Modal>
     </div>

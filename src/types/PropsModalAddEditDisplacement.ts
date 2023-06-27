@@ -8,16 +8,22 @@ export default interface PropsModalAddEditDisplacement {
   getDisplacements: () => Promise<void>
 
   formEdit: {
-    finalKm: string
+    finalKm: number
     endTripDate: string
     endTripHours: string
     observation: string
   }
   setFormEdit: Dispatch<SetStateAction<{
-    finalKm: string
+    finalKm: number
     endTripDate: string
     endTripHours: string
     observation: string
   }>>
   saveId: number
+
+  details: {
+    clientName: string,
+    driverName: string,
+    plate: string
+  }
 }

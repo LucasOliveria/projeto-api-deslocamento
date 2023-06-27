@@ -12,6 +12,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import format from 'date-fns/format';
+import EditLocationOutlinedIcon from '@mui/icons-material/EditLocationOutlined';
 
 export default function InfoTable(
   { header,
@@ -19,14 +20,16 @@ export default function InfoTable(
     drivers,
     displacements,
     setDetails,
-    setOpen,
+    setOpenModalDetails,
     cars,
     setOpenAddEditClient,
     setOpenAddEditDriver,
     setOpenAddEditCars,
+    setOpenAddEditDisplacement,
     setFormEditClient,
     setFormEditDriver,
     setFormEditCar,
+    setFormEditDisplacement,
     setTitleModal,
     setOpenModalDelete,
     setSaveId
@@ -38,13 +41,13 @@ export default function InfoTable(
       const car = await api.get(`/Veiculo/${idCar}`);
       const client = await api.get(`/Cliente/${idClient}`);
 
-      setOpen && setOpen(true)
+      setOpenModalDetails && setOpenModalDetails(true)
 
       setDetails && setDetails({
         clientName: client.data.nome,
         driverName: driver.data.nome,
         plate: car.data.placa
-      })
+      });
 
 
     } catch (error: any) {
@@ -112,8 +115,40 @@ export default function InfoTable(
     }
   }
 
+  async function handleOpenEditDisplacement(id: number, idDriver: number, idCar: number, idClient: number) {
+    setOpenAddEditDisplacement && setOpenAddEditDisplacement(true);
+    setTitleModal && setTitleModal("Encerrar Deslocamento");
+
+    setSaveId(id);
+
+    try {
+      const displacement = await api.get(`/Deslocamento/${id}`);
+
+      setFormEditDisplacement && setFormEditDisplacement({
+        finalKm: 0,
+        endTripDate: format(new Date(), "yyyy-MM-dd"),
+        endTripHours: format(new Date(), "HH:mm"),
+        observation: displacement.data.observacao
+      });
+
+      const driver = await api.get(`/Condutor/${idDriver}`);
+      const car = await api.get(`/Veiculo/${idCar}`);
+      const client = await api.get(`/Cliente/${idClient}`);
+
+      setDetails && setDetails({
+        clientName: client.data.nome,
+        driverName: driver.data.nome,
+        plate: car.data.placa
+      });
+
+    } catch (error: any) {
+      console.log(error.response.data);
+    }
+  }
+
   function handleOpenDeleteModal(id: number) {
     setOpenModalDelete && setOpenModalDelete(true);
+    console.log(id);
 
     setSaveId(id);
   }
@@ -128,7 +163,6 @@ export default function InfoTable(
                 <TableCell
                   key={title.id}
                   align='center'
-                  style={{ minWidth: "100px" }}
                 >
                   {title.label}
                 </TableCell>
@@ -233,8 +267,9 @@ export default function InfoTable(
                     </TableCell>
                     <TableCell>
                       {!formatDateEnd ?
-                        <RoomOutlinedIcon
+                        <EditLocationOutlinedIcon
                           sx={{ cursor: "pointer" }}
+                          onClick={() => handleOpenEditDisplacement(info.id, info.idCondutor, info.idVeiculo, info.idCliente)}
                         /> :
                         <WhereToVoteOutlinedIcon
                           onClick={() => handleDetailsDisplacement(info.idCondutor, info.idVeiculo, info.idCliente)}
@@ -243,7 +278,7 @@ export default function InfoTable(
                       }
                     </TableCell>
                     <TableCell>
-                      <DeleteForeverIcon />
+                      <DeleteForeverIcon onClick={() => handleOpenDeleteModal(info.id)} />
                     </TableCell>
                   </TableRow>
                 )
