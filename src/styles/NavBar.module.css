@@ -27,9 +27,10 @@
 
   .nav_bar.modal_fullscreen {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     width: 100vw;
     height: 100vh;
+    padding-top: 140px;
     border-radius: 0;
     background-color: #1b1b1b;
     position: absolute;
@@ -45,6 +46,7 @@
 
   .bottons_nav {
     display: none;
+    gap: 20px;
     width: 100vw;
     height: 50vh;
     flex-direction: column;
