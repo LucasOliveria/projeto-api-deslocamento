@@ -26,6 +26,8 @@
   }
 
   .nav_bar.modal_fullscreen {
+    display: flex;
+    align-items: center;
     width: 100vw;
     height: 100vh;
     border-radius: 0;
@@ -37,6 +39,8 @@
 
   .nav_bar.modal_fullscreen .bottons_nav {
     display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .bottons_nav {
@@ -44,6 +48,5 @@
     width: 100vw;
     height: 50vh;
     flex-direction: column;
-    margin-top: 50px;
   }
 }

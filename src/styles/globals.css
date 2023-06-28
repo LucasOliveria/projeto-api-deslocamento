@@ -20,16 +20,24 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 9px;
+  height: 9px;
 }
 
 ::-webkit-scrollbar-track {
   background-color: #e6e6e6;
-  border-radius: 10px;
+
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: #3f3d56;
+::-webkit-scrollbar-thumb,
+.MuiTableHead-root,
+.MuiTableCell-head {
+  background-color: #3F3D56;
+
+}
+
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-track {
   border-radius: 10px;
 }
 
@@ -55,7 +63,9 @@ body {
   font-size: 1rem;
 }
 
-.MuiBottomNavigationAction-root {
+.MuiBottomNavigationAction-root,
+.MuiButton-root,
+.MuiTableCell-head {
   color: #ffffff;
 }
 
@@ -68,15 +78,18 @@ body {
 }
 
 .MuiButton-root {
-  margin-bottom: 25px;
-  height: 35px;
   width: 150px;
+  height: 35px;
+  margin-bottom: 25px;
+  border: none;
   font-size: 1.2rem;
   font-weight: 700;
-  border-radius: 15px;
-  color: #ffffff;
-  border: none;
   background-color: #73c927;
+}
+
+.MuiButton-root,
+.MuiPaper-root {
+  border-radius: 15px;
 }
 
 .MuiButton-root:hover {
@@ -84,8 +97,7 @@ body {
 }
 
 .MuiPaper-root {
-  border-radius: 15px;
-  background-color: #dddddd;
+  background-color: #dadada;
 }
 
 .MuiTableCell-body {
@@ -95,21 +107,19 @@ body {
 
 .MuiTableCell-body:last-of-type,
 .MuiTableCell-body:nth-last-child(2) {
+  width: 50px;
   cursor: pointer;
 }
 
 .MuiTableHead-root {
-  background-color: #3f3d56;
-  border-color: #3f3d56;
+  border-color: #3F3D56;
 }
 
 .MuiTableCell-head {
   min-width: 100px;
+  border: none;
   font-size: 1.3rem;
   font-weight: 700;
-  color: #ffffff;
-  background-color: #3f3d56;
-  border: none;
   z-index: 0;
 }
 
@@ -126,6 +136,10 @@ body {
 
 .MuiTypography-root {
   font-size: 1.7rem;
+}
+
+.MuiTypography-root,
+.MuiInputLabel-root {
   color: #3f3d56;
 }
 
@@ -146,7 +160,6 @@ body {
 
 .MuiInputLabel-root {
   font-size: 1.4rem;
-  color: #3f3d56;
   font-weight: 700;
 }
 
@@ -166,7 +179,6 @@ body {
   .Toastify__toast-theme--colored.Toastify__toast--info,
   .Toastify__toast-theme--colored.Toastify__toast--error,
   .Toastify__toast-theme--colored.Toastify__toast--success {
-    border-radius: 8px;
     width: 340px;
     margin-top: 10px;
   }
@@ -191,9 +203,9 @@ body {
   }
 
   .MuiButton-root {
-    margin-bottom: 10px;
-    height: 30px;
     width: 100px;
+    height: 30px;
+    margin-bottom: 10px;
   }
 
   .MuiButton-root:hover {

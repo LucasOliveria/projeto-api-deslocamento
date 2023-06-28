@@ -62,28 +62,23 @@ export default function NavBar({ valueNav }: { valueNav: number }) {
           />
           <BottomNavigationAction
             label="Clientes"
-            onClick={() => router.push("/clientes")}
+            onClick={() => router.push("/clients")}
             icon={<GroupIcon />}
           />
           <BottomNavigationAction
             label="Condutores"
-            onClick={() => router.push("/condutores")}
+            onClick={() => router.push("/drivers")}
             icon={<BadgeIcon />}
           />
           <BottomNavigationAction
-            label="Deslocamento"
-            onClick={() => router.push("/deslocamento")}
+            label="Deslocamentos"
+            onClick={() => router.push("/displacements")}
             icon={<MapOutlinedIcon />}
           />
           <BottomNavigationAction
-            label="Veículo"
-            onClick={() => router.push("/veiculos")}
+            label="Veículos"
+            onClick={() => router.push("/cars")}
             icon={<DirectionsCarIcon />}
-          />
-          <BottomNavigationAction
-            label=""
-            onClick={() => router.push("/")}
-            icon={<ExitToAppOutlinedIcon />}
           />
         </BottomNavigation>
       </div>

@@ -13,6 +13,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import format from 'date-fns/format';
 import { toast } from 'react-toastify';
+import styles from '../../styles/Table.module.css';
 
 export default function InfoTable(
   { header,
@@ -189,11 +190,13 @@ export default function InfoTable(
                   </TableCell>
                   <TableCell>
                     <EditIcon
+                      className={styles.edit_icon}
                       onClick={() => handleOpenEditClient(client.id)}
                     />
                   </TableCell>
                   <TableCell>
                     <DeleteForeverIcon
+                      className={styles.delete_icon}
                       onClick={() => handleOpenDeleteModal(client.id)}
                     />
                   </TableCell>
@@ -222,11 +225,13 @@ export default function InfoTable(
                     </TableCell>
                     <TableCell>
                       <EditIcon
+                        className={styles.edit_icon}
                         onClick={() => handleOpenEditDriver(driver.id)}
                       />
                     </TableCell>
                     <TableCell>
                       <DeleteForeverIcon
+                        className={styles.delete_icon}
                         onClick={() => handleOpenDeleteModal(driver.id)}
                       />
                     </TableCell>
@@ -240,7 +245,6 @@ export default function InfoTable(
               {displacements?.map((info) => {
                 const formatDateStart = info.inicioDeslocamento && format(new Date(info.inicioDeslocamento), "dd-MM-yyyy  HH:mm");
                 const formatDateEnd = info.fimDeslocamento && format(new Date(info.fimDeslocamento), "dd-MM-yyyy  HH:mm");
-
                 return (
                   <TableRow hover key={info.id} role="checkbox" tabIndex={-1}>
                     <TableCell>
@@ -267,17 +271,20 @@ export default function InfoTable(
                     <TableCell>
                       {!formatDateEnd ?
                         <EditLocationOutlinedIcon
-                          sx={{ cursor: "pointer" }}
+                          className={styles.edit_icon}
                           onClick={() => handleOpenEditDisplacement(info.id, info.idCondutor, info.idVeiculo, info.idCliente)}
                         /> :
                         <WhereToVoteOutlinedIcon
+                          className={styles.edit_icon}
                           onClick={() => handleDetailsDisplacement(info.idCondutor, info.idVeiculo, info.idCliente)}
-                          sx={{ cursor: "pointer" }}
                         />
                       }
                     </TableCell>
                     <TableCell>
-                      <DeleteForeverIcon onClick={() => handleOpenDeleteModal(info.id)} />
+                      <DeleteForeverIcon
+                        className={styles.delete_icon}
+                        onClick={() => handleOpenDeleteModal(info.id)}
+                      />
                     </TableCell>
                   </TableRow>
                 )
@@ -301,10 +308,14 @@ export default function InfoTable(
                     {car.anoFabricacao}
                   </TableCell>
                   <TableCell>
-                    <EditIcon onClick={() => handleOpenEditCar(car.id)} />
+                    <EditIcon
+                      className={styles.edit_icon}
+                      onClick={() => handleOpenEditCar(car.id)}
+                    />
                   </TableCell>
                   <TableCell>
                     <DeleteForeverIcon
+                      className={styles.delete_icon}
                       onClick={() => handleOpenDeleteModal(car.id)}
                     />
                   </TableCell>

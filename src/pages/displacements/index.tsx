@@ -56,7 +56,7 @@ export default function Displacements() {
       <main className={styles.main}>
         <div className={styles.containerTable}>
           <div className={styles.container_title}>
-            <h1 className={styles.title_table}>Deslocamento</h1>
+            <h1 className={styles.title_table}>Deslocamentos</h1>
           </div>
           <div className={styles.container_add_button}>
             <CustomButtonOpen
