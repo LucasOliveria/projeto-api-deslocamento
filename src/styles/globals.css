@@ -127,10 +127,6 @@ body {
   max-height: 90%;
   border-radius: 20px;
   background-color: #dedede;
-  background-image: url("../assets/logo.svg");
-  background-repeat: no-repeat;
-  background-size: 180px;
-  background-position: right;
   overflow: auto;
 }
 
