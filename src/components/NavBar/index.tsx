@@ -11,6 +11,7 @@ import { StyledEngineProvider } from "@mui/material/styles";
 import { useRouter } from 'next/router';
 import { useEffect, useState } from "react";
 import styles from "../../styles/NavBar.module.css";
+import animations from '../../styles/Animations.module.css';
 
 export default function NavBar({ valueNav }: { valueNav: number }) {
   const [value, setValue] = useState(valueNav);
@@ -32,7 +33,7 @@ export default function NavBar({ valueNav }: { valueNav: number }) {
   return (
     <StyledEngineProvider injectFirst>
       <div
-        className={`${styles.nav_bar} ${openMenu && styles.modal_fullscreen}`}
+        className={`${styles.nav_bar} ${openMenu && `${styles.modal_fullscreen} ${animations.slide_in_top}`}`}
       >
         {openMenu ?
           <CloseIcon

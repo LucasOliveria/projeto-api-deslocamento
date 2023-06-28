@@ -9,6 +9,7 @@ import api from "@/services/api";
 import styles from '@/styles/Home.module.css';
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import animations from "../../styles/Animations.module.css";
 
 export default function Displacements() {
   const [displacements, setDisplacements] = useState([]);
@@ -54,7 +55,7 @@ export default function Displacements() {
     <div className={styles.body}>
       <Header valueNav={3} />
       <main className={styles.main}>
-        <div className={styles.containerTable}>
+        <div className={`${styles.containerTable} ${animations.fade_in_left}`}>
           <div className={styles.container_title}>
             <h1 className={styles.title_table}>Deslocamentos</h1>
           </div>

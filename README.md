@@ -40,7 +40,7 @@ O objetivo do projeto consiste em criar uma aplicação de gerenciamento de serv
 <br/>
 <img src="./src/images/Condutores.png" alt="">
 <br/>
-<img src="./src/images/Deslocamento.png" alt="">
+<img src="./src/images/Deslocamentos.png" alt="">
 <br/>
 <img src="./src/images/Veículos.png" alt="">
 <br/>
