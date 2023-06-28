@@ -6,7 +6,6 @@ import ModalDeleteClient from "@/components/ModalDeleteClient";
 import InfoTable from "@/components/Table";
 import api from "@/services/api";
 import styles from '@/styles/Home.module.css';
-import { StyledEngineProvider } from "@mui/material";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
@@ -46,57 +45,55 @@ export default function Clients() {
 
   return (
     <div className={styles.body}>
-      <StyledEngineProvider injectFirst >
-        <Header valueNav={1} />
-        <main className={styles.main}>
-          <div className={styles.containerTable}>
-            <div className={styles.container_title}>
-              <h1 className={styles.title_table}>Clientes</h1>
-            </div>
-            <div className={styles.container_add_button}>
-              <CustomButtonOpen
-                setTitleModal={setTitleModal}
-                setOpenAddEditClient={setOpenAddEditClient}
-              />
-            </div>
-            <InfoTable
-              header={
-                [
-                  { id: 1, label: "nome" },
-                  { id: 2, label: "Nº documento" },
-                  { id: 3, label: "Tipo de Documento" },
-                  { id: 4, label: "Endereço" },
-                  { id: 5, label: "Cidade/UF" },
-                  { id: 6, label: "" },
-                  { id: 7, label: "" }
-                ]
-              }
-              clients={clients}
-              setOpenAddEditClient={setOpenAddEditClient}
+      <Header valueNav={1} />
+      <main className={styles.main}>
+        <div className={styles.containerTable}>
+          <div className={styles.container_title}>
+            <h1 className={styles.title_table}>Clientes</h1>
+          </div>
+          <div className={styles.container_add_button}>
+            <CustomButtonOpen
               setTitleModal={setTitleModal}
-              setFormEditClient={setFormEdit}
-              setOpenModalDelete={setOpenModalDelete}
-              setSaveId={setSaveId}
+              setOpenAddEditClient={setOpenAddEditClient}
             />
           </div>
-        </main>
-        <Footer />
-        <ModalAddEditClient
-          openAddEditClient={openAddEditClient}
-          setOpenAddEditClient={setOpenAddEditClient}
-          titleModal={titleModal}
-          getClients={getClients}
-          formEdit={formEdit}
-          setFormEdit={setFormEdit}
-          saveId={saveId}
-        />
-        <ModalDeleteClient
-          openModalDelete={openModalDelete}
-          setOpenModalDelete={setOpenModalDelete}
-          getClients={getClients}
-          saveId={saveId}
-        />
-      </StyledEngineProvider>
+          <InfoTable
+            header={
+              [
+                { id: 1, label: "nome" },
+                { id: 2, label: "Nº documento" },
+                { id: 3, label: "Tipo de Documento" },
+                { id: 4, label: "Endereço" },
+                { id: 5, label: "Cidade/UF" },
+                { id: 6, label: "" },
+                { id: 7, label: "" }
+              ]
+            }
+            clients={clients}
+            setOpenAddEditClient={setOpenAddEditClient}
+            setTitleModal={setTitleModal}
+            setFormEditClient={setFormEdit}
+            setOpenModalDelete={setOpenModalDelete}
+            setSaveId={setSaveId}
+          />
+        </div>
+      </main>
+      <Footer />
+      <ModalAddEditClient
+        openAddEditClient={openAddEditClient}
+        setOpenAddEditClient={setOpenAddEditClient}
+        titleModal={titleModal}
+        getClients={getClients}
+        formEdit={formEdit}
+        setFormEdit={setFormEdit}
+        saveId={saveId}
+      />
+      <ModalDeleteClient
+        openModalDelete={openModalDelete}
+        setOpenModalDelete={setOpenModalDelete}
+        getClients={getClients}
+        saveId={saveId}
+      />
     </div>
   )
 }

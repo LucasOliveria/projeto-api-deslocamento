@@ -8,6 +8,7 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 import { toast } from 'react-toastify';
 import styles from "../../styles/Forms.module.css";
 import SendButton from '../SendButton';
+import { StyledEngineProvider } from '@mui/material/styles';
 
 const style = {
   border: '2px solid #000',
@@ -150,148 +151,150 @@ export default function ModalAddEditClient(
 
   return (
     <div>
-      <Modal
-        open={openAddEditClient}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <CloseIcon
-            sx={{ position: "absolute", top: 5, right: 12, cursor: "pointer" }}
-            onClick={handleClose}
-          />
-          {titleModal === "Cadastrar Cliente" &&
-            <form
-              className={styles.form}
-              onSubmit={submitForm}
-            >
-              <h1>{titleModal}</h1>
-              <TextField
-                label="Nome"
-                name='name'
-                value={formAdd.name}
-                variant="standard"
-                autoComplete='on'
-                onChange={handleChanceInput}
-              />
-              <TextField
-                label="Nº Documento"
-                name='docNumber'
-                value={formAdd.docNumber}
-                variant="standard"
-                autoComplete='on'
-                onChange={handleChanceInput}
-              />
-              <TextField
-                label="Tipo de Documento"
-                name='docType'
-                value={formAdd.docType}
-                variant="standard"
-                autoComplete='on'
-                onChange={handleChanceInput}
-              />
-              <TextField
-                label="Endereço"
-                name='adress'
-                value={formAdd.adress}
-                variant="standard"
-                autoComplete='on'
-                onChange={handleChanceInput}
-              />
-              <TextField
-                label="Número"
-                name='houseNumber'
-                value={formAdd.houseNumber}
-                variant="standard"
-                autoComplete='on'
-                onChange={handleChanceInput}
-              />
-              <TextField
-                label="Bairro"
-                name='neighborhood'
-                value={formAdd.neighborhood}
-                variant="standard"
-                autoComplete='on'
-                onChange={handleChanceInput}
-              />
-              <TextField
-                label="Cidade"
-                name='city'
-                value={formAdd.city}
-                variant="standard"
-                autoComplete='on'
-                onChange={handleChanceInput}
-              />
-              <TextField
-                label="UF"
-                name='state'
-                value={formAdd.state}
-                variant="standard"
-                autoComplete='on'
-                onChange={handleChanceInput}
-              />
-              <SendButton />
-            </form>
-          }
-          {titleModal === "Editar Cliente" &&
-            <form
-              className={styles.form}
-              onSubmit={submitForm}
-            >
-              <h1>{titleModal}</h1>
-              <TextField
-                label="Nome"
-                name='name'
-                value={formEdit.name}
-                variant="standard"
-                autoComplete='on'
-                onChange={handleChanceInput}
-              />
-              <TextField
-                label="Endereço"
-                name='adress'
-                value={formEdit.adress}
-                variant="standard"
-                autoComplete='on'
-                onChange={handleChanceInput}
-              />
-              <TextField
-                label="Número"
-                name='houseNumber'
-                value={formEdit.houseNumber}
-                variant="standard"
-                autoComplete='on'
-                onChange={handleChanceInput}
-              />
-              <TextField
-                label="Bairro"
-                name='neighborhood'
-                value={formEdit.neighborhood}
-                variant="standard"
-                autoComplete='on'
-                onChange={handleChanceInput}
-              />
-              <TextField
-                label="Cidade"
-                name='city'
-                value={formEdit.city}
-                variant="standard"
-                autoComplete='on'
-                onChange={handleChanceInput}
-              />
-              <TextField
-                label="UF"
-                name='state'
-                value={formEdit.state}
-                variant="standard"
-                autoComplete='on'
-                onChange={handleChanceInput}
-              />
-              <SendButton />
-            </form>
-          }
-        </Box>
-      </Modal>
+      <StyledEngineProvider injectFirst>
+        <Modal
+          open={openAddEditClient}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <CloseIcon
+              sx={{ position: "absolute", top: 5, right: 12, cursor: "pointer" }}
+              onClick={handleClose}
+            />
+            {titleModal === "Cadastrar Cliente" &&
+              <form
+                className={styles.form}
+                onSubmit={submitForm}
+              >
+                <h1>{titleModal}</h1>
+                <TextField
+                  label="Nome"
+                  name='name'
+                  value={formAdd.name}
+                  variant="standard"
+                  autoComplete='on'
+                  onChange={handleChanceInput}
+                />
+                <TextField
+                  label="Nº Documento"
+                  name='docNumber'
+                  value={formAdd.docNumber}
+                  variant="standard"
+                  autoComplete='on'
+                  onChange={handleChanceInput}
+                />
+                <TextField
+                  label="Tipo de Documento"
+                  name='docType'
+                  value={formAdd.docType}
+                  variant="standard"
+                  autoComplete='on'
+                  onChange={handleChanceInput}
+                />
+                <TextField
+                  label="Endereço"
+                  name='adress'
+                  value={formAdd.adress}
+                  variant="standard"
+                  autoComplete='on'
+                  onChange={handleChanceInput}
+                />
+                <TextField
+                  label="Número"
+                  name='houseNumber'
+                  value={formAdd.houseNumber}
+                  variant="standard"
+                  autoComplete='on'
+                  onChange={handleChanceInput}
+                />
+                <TextField
+                  label="Bairro"
+                  name='neighborhood'
+                  value={formAdd.neighborhood}
+                  variant="standard"
+                  autoComplete='on'
+                  onChange={handleChanceInput}
+                />
+                <TextField
+                  label="Cidade"
+                  name='city'
+                  value={formAdd.city}
+                  variant="standard"
+                  autoComplete='on'
+                  onChange={handleChanceInput}
+                />
+                <TextField
+                  label="UF"
+                  name='state'
+                  value={formAdd.state}
+                  variant="standard"
+                  autoComplete='on'
+                  onChange={handleChanceInput}
+                />
+                <SendButton />
+              </form>
+            }
+            {titleModal === "Editar Cliente" &&
+              <form
+                className={styles.form}
+                onSubmit={submitForm}
+              >
+                <h1>{titleModal}</h1>
+                <TextField
+                  label="Nome"
+                  name='name'
+                  value={formEdit.name}
+                  variant="standard"
+                  autoComplete='on'
+                  onChange={handleChanceInput}
+                />
+                <TextField
+                  label="Endereço"
+                  name='adress'
+                  value={formEdit.adress}
+                  variant="standard"
+                  autoComplete='on'
+                  onChange={handleChanceInput}
+                />
+                <TextField
+                  label="Número"
+                  name='houseNumber'
+                  value={formEdit.houseNumber}
+                  variant="standard"
+                  autoComplete='on'
+                  onChange={handleChanceInput}
+                />
+                <TextField
+                  label="Bairro"
+                  name='neighborhood'
+                  value={formEdit.neighborhood}
+                  variant="standard"
+                  autoComplete='on'
+                  onChange={handleChanceInput}
+                />
+                <TextField
+                  label="Cidade"
+                  name='city'
+                  value={formEdit.city}
+                  variant="standard"
+                  autoComplete='on'
+                  onChange={handleChanceInput}
+                />
+                <TextField
+                  label="UF"
+                  name='state'
+                  value={formEdit.state}
+                  variant="standard"
+                  autoComplete='on'
+                  onChange={handleChanceInput}
+                />
+                <SendButton />
+              </form>
+            }
+          </Box>
+        </Modal>
+      </StyledEngineProvider>
     </div>
   );
 }
