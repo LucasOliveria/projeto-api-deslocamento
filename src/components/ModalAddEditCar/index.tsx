@@ -60,6 +60,8 @@ export default function ModalAddEditCar(
         currentKm: 0
       });
 
+      handleClose();
+
       return toast.success("Veículo cadastrado com sucesso!");
     } catch (error: any) {
       return toast.error(error.response.data);

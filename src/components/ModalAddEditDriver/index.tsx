@@ -109,6 +109,8 @@ export default function ModalAddEditDriver(
         expiresIn: format(new Date(), "yyyy-MM-dd")
       });
 
+      handleClose();
+
       return toast.success("Condutor cadastrado com sucesso!");
     } catch (error: any) {
       return toast.error(error.response.data);

@@ -105,6 +105,8 @@ export default function ModalAddEditDisplacement(
         idCar: 0,
       });
 
+      handleClose();
+
       return toast.success("Deslocamento iniciado!");
     } catch (error: any) {
       return toast.error(error.response.data);

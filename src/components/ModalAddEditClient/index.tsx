@@ -72,6 +72,8 @@ export default function ModalAddEditClient(
         state: ""
       });
 
+      handleClose();
+
       return toast.success("Cliente cadastrado com sucesso!");
     } catch (error: any) {
       return toast.error(error.response.data);
